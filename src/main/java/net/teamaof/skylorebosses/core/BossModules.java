@@ -1,0 +1,22 @@
+package net.teamaof.skylorebosses.core;
+
+import java.util.List;
+import java.util.Optional;
+import net.teamaof.skylorebosses.bosses.matriscalyx.MatrisCalyxBoss;
+
+/** The list of bosses in the mod. Adding a boss = one line here. */
+public final class BossModules {
+    private static final List<BossModule> ALL = List.of(
+            new MatrisCalyxBoss()
+    );
+
+    private BossModules() {}
+
+    public static List<BossModule> all() {
+        return ALL;
+    }
+
+    public static Optional<BossModule> byId(String id) {
+        return ALL.stream().filter(m -> m.id().equals(id)).findFirst();
+    }
+}

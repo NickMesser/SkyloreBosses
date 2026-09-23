@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:nerve_arm_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.matris_calyx.nerve_first.title"
+    },
+    "description": {
+      "translate": "advancements.matris_calyx.nerve_first.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:matris_calyx/first_arm"
+}

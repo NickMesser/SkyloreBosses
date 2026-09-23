@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "GHG",
+    " B "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "H": {
+      "item": "minecraft:honey_bottle"
+    },
+    "B": {
+      "item": "minecraft:glow_berries"
+    }
+  },
+  "result": {
+    "id": "skylore_bosses:purgative_syringe",
+    "count": 2
+  }
+}

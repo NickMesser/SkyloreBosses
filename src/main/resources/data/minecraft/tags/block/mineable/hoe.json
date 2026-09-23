@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "skylore_bosses:flesh",
+    "skylore_bosses:flesh_membrane",
+    "skylore_bosses:glow_vein",
+    "skylore_bosses:ruptured_vent"
+  ]
+}

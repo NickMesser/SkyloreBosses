@@ -1,0 +1,675 @@
+{
+  "matris_calyx.ambient.stomach": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.ambient.stomach",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/ambient_stomach",
+        "attenuation_distance": 256,
+        "stream": true
+      }
+    ]
+  },
+  "matris_calyx.arm.charging.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.charging.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_charging_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.charging.gallop": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.charging.gallop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_charging_gallop"
+      }
+    ]
+  },
+  "matris_calyx.arm.charging.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.charging.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_charging_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.charging.impact": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.charging.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_charging_impact"
+      }
+    ]
+  },
+  "matris_calyx.arm.charging.snort": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.charging.snort",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_charging_snort"
+      }
+    ]
+  },
+  "matris_calyx.arm.close": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.close",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_close"
+      }
+    ]
+  },
+  "matris_calyx.arm.collapse": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.collapse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_collapse"
+      }
+    ]
+  },
+  "matris_calyx.arm.core_burst": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.core_burst",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_core_burst"
+      }
+    ]
+  },
+  "matris_calyx.arm.emerge": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.emerge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_emerge"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.snap": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.snap",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_snap"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.telegraph": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.telegraph",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_telegraph"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.whip": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.whip",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_whip"
+      }
+    ]
+  },
+  "matris_calyx.arm.grasping.yank": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.grasping.yank",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_grasping_yank"
+      }
+    ]
+  },
+  "matris_calyx.arm.mouth.chomp": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.mouth.chomp",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_mouth_chomp"
+      }
+    ]
+  },
+  "matris_calyx.arm.mouth.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.mouth.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_mouth_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.mouth.gulp": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.mouth.gulp",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_mouth_gulp"
+      }
+    ]
+  },
+  "matris_calyx.arm.mouth.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.mouth.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_mouth_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.mouth.shriek": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.mouth.shriek",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_mouth_shriek"
+      }
+    ]
+  },
+  "matris_calyx.arm.nerve.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.nerve.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_nerve_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.nerve.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.nerve.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_nerve_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.nerve.pulse": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.nerve.pulse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_nerve_pulse"
+      }
+    ]
+  },
+  "matris_calyx.arm.open": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.open",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_open"
+      }
+    ]
+  },
+  "matris_calyx.arm.slam.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.slam.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_slam_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.slam.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.slam.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_slam_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.slam.impact": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.slam.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_slam_impact"
+      }
+    ]
+  },
+  "matris_calyx.arm.slam.strain": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.slam.strain",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_slam_strain"
+      }
+    ]
+  },
+  "matris_calyx.arm.slam.windup": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.slam.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_slam_windup"
+      }
+    ]
+  },
+  "matris_calyx.arm.spitting.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.spitting.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_spitting_death"
+      }
+    ]
+  },
+  "matris_calyx.arm.spitting.gurgle": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.spitting.gurgle",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_spitting_gurgle"
+      }
+    ]
+  },
+  "matris_calyx.arm.spitting.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.spitting.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_spitting_hurt"
+      }
+    ]
+  },
+  "matris_calyx.arm.spitting.spit": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.spitting.spit",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_spitting_spit"
+      }
+    ]
+  },
+  "matris_calyx.arm.thunk": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.thunk",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_thunk"
+      }
+    ]
+  },
+  "matris_calyx.arm.window_warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.arm.window_warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/arm_window_warn"
+      }
+    ]
+  },
+  "matris_calyx.attack.bile_rain.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.bile_rain.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_bile_rain_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.attack.peristalsis.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.peristalsis.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_peristalsis_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.attack.retina_flash.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.retina_flash.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_retina_flash_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.attack.root_grip.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.root_grip.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_root_grip_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.attack.spore_exhale.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.spore_exhale.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_spore_exhale_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.attack.swallow.warn": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.attack.swallow.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/attack_swallow_warn",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bile.splat": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bile.splat",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bile_splat"
+      }
+    ]
+  },
+  "matris_calyx.bloom.collapse": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.collapse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_collapse",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.death_scream": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.death_scream",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_death_scream",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.eye_open": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.eye_open",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_eye_open",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.eye_rupture": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.eye_rupture",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_eye_rupture",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.heart_split": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.heart_split",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_heart_split",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.heartbeat": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.heartbeat",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_heartbeat",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_hurt",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.laser_charge": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.laser_charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_laser_charge",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.laser_loop": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.laser_loop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_laser_loop",
+        "attenuation_distance": 256,
+        "stream": true
+      }
+    ]
+  },
+  "matris_calyx.bloom.last_heartbeat": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.last_heartbeat",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_last_heartbeat",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.retina_flash": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.retina_flash",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_retina_flash",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.retina_inhale": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.retina_inhale",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_retina_inhale",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.rise": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.rise",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_rise",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.bloom.tear": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.bloom.tear",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/bloom_tear",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.drifter.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.drifter.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/drifter_hurt"
+      }
+    ]
+  },
+  "matris_calyx.drifter.idle": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.drifter.idle",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/drifter_idle"
+      }
+    ]
+  },
+  "matris_calyx.drifter.pop": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.drifter.pop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/drifter_pop"
+      }
+    ]
+  },
+  "matris_calyx.drifter.tether": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.drifter.tether",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/drifter_tether"
+      }
+    ]
+  },
+  "matris_calyx.encounter.awaken": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.encounter.awaken",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/encounter_awaken",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.encounter.victory": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.encounter.victory",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/encounter_victory",
+        "attenuation_distance": 256
+      }
+    ]
+  },
+  "matris_calyx.infection.rise": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.infection.rise",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/infection_rise"
+      }
+    ]
+  },
+  "matris_calyx.infection.taken": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.infection.taken",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/infection_taken"
+      }
+    ]
+  },
+  "matris_calyx.mite.pop": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.mite.pop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/mite_pop"
+      }
+    ]
+  },
+  "matris_calyx.mite.skitter": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.mite.skitter",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/mite_skitter"
+      }
+    ]
+  },
+  "matris_calyx.mite.swell": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.mite.swell",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/mite_swell"
+      }
+    ]
+  },
+  "matris_calyx.syringe.inject": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.syringe.inject",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/syringe_inject"
+      }
+    ]
+  },
+  "matris_calyx.thrall.attack": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.attack",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_attack"
+      }
+    ]
+  },
+  "matris_calyx.thrall.death": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_death"
+      }
+    ]
+  },
+  "matris_calyx.thrall.emerge": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.emerge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_emerge"
+      }
+    ]
+  },
+  "matris_calyx.thrall.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_hurt"
+      }
+    ]
+  },
+  "matris_calyx.thrall.idle": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.idle",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_idle"
+      }
+    ]
+  },
+  "matris_calyx.thrall.step": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.thrall.step",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/thrall_step"
+      }
+    ]
+  },
+  "matris_calyx.vent.birth": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.birth",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_birth"
+      }
+    ]
+  },
+  "matris_calyx.vent.breathe": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.breathe",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_breathe"
+      }
+    ]
+  },
+  "matris_calyx.vent.hurt": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_hurt"
+      }
+    ]
+  },
+  "matris_calyx.vent.puff": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.puff",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_puff"
+      }
+    ]
+  },
+  "matris_calyx.vent.rupture": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.rupture",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_rupture"
+      }
+    ]
+  },
+  "matris_calyx.vent.strain": {
+    "subtitle": "subtitles.skylore_bosses.matris_calyx.vent.strain",
+    "sounds": [
+      {
+        "name": "skylore_bosses:matris_calyx/vent_strain"
+      }
+    ]
+  }
+}

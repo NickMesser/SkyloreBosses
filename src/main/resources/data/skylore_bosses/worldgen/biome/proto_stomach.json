@@ -1,0 +1,30 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.9,
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 3804952,
+    "sky_color": 1705224,
+    "water_color": 7244312,
+    "water_fog_color": 2766856,
+    "grass_color": 8006192,
+    "foliage_color": 8006192,
+    "particle": {
+      "options": {
+        "type": "minecraft:crimson_spore"
+      },
+      "probability": 0.012
+    },
+    "ambient_sound": "skylore_bosses:matris_calyx.ambient.stomach",
+    "mood_sound": {
+      "sound": "skylore_bosses:matris_calyx.ambient.stomach",
+      "tick_delay": 3000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    }
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
+}

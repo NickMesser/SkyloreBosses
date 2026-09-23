@@ -1,0 +1,17 @@
+{
+  "values": [
+    "skylore_bosses:flesh",
+    "skylore_bosses:hardened_flesh",
+    "skylore_bosses:flesh_membrane",
+    "skylore_bosses:glow_vein",
+    "skylore_bosses:heart_core",
+    "skylore_bosses:rib_bone",
+    "skylore_bosses:syringe_cache",
+    "skylore_bosses:ruptured_vent",
+    "skylore_bosses:spore_vent",
+    "minecraft:bedrock",
+    "minecraft:barrier",
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian"
+  ]
+}

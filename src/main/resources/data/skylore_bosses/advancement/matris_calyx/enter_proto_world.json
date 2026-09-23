@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:flesh_membrane"
+    },
+    "title": {
+      "translate": "advancements.matris_calyx.enter_proto_world.title"
+    },
+    "description": {
+      "translate": "advancements.matris_calyx.enter_proto_world.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skylore_bosses:block/matris_calyx/flesh"
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    },
+    "dim": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "skylore_bosses:proto_world"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "code",
+      "dim"
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "skylore_bosses:item/matris_calyx/calyx_heart"
+  }
+}
