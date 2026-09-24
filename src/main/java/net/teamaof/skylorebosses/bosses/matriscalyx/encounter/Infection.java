@@ -48,6 +48,11 @@ public final class Infection {
     }
 
     public static void set(ServerPlayer p, int value) {
+        p.setData(MatrisAttachments.INFECTION_FRACTION.get(), 0f);
+        write(p, value);
+    }
+
+    private static void write(ServerPlayer p, int value) {
         int old = get(p);
         int v = Math.max(0, Math.min(MAX, value));
         if (v == old) return;
@@ -60,8 +65,12 @@ public final class Infection {
     public static void add(Player p, int amount) {
         if (!(p instanceof ServerPlayer sp) || amount <= 0 || !MatrisConfig.INFECTION_ENABLED.get()) return;
         if (sp.isCreative() || sp.isSpectator()) return;
-        int scaled = Math.max(1, Math.round(amount * bridge().incomingMultiplier(sp)));
-        set(sp, get(sp) + scaled);
+        float fraction = sp.getData(MatrisAttachments.INFECTION_FRACTION.get()) + amount * bridge().incomingMultiplier(sp);
+        int whole = (int) Math.floor(fraction);
+        fraction -= whole;
+        if (fraction < 0f) fraction = 0f;
+        sp.setData(MatrisAttachments.INFECTION_FRACTION.get(), fraction);
+        if (whole > 0) write(sp, get(sp) + whole);
     }
 
     /** Cure {@code target} by {@code amount}; doctors cure better (never exclusively). */

@@ -61,7 +61,7 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
 ./gradlew runClient
 ```
 
-- `gradle.properties` pins `org.gradle.java.home` to a local JDK 21. Change or remove it on other machines.
+- Use a JDK 21 on `JAVA_HOME` or `PATH`. Do not commit a machine-local `org.gradle.java.home`.
 - **In-game tests:** put the Marionette jar in `run/mods/`, then run `tools/testing/restart.py` followed by one of the `t_*.py` scripts:
   - `t_gate.py`: window gating
   - `t_flow.py`: phase flow

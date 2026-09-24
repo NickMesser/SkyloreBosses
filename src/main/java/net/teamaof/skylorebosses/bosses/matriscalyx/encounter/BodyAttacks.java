@@ -59,9 +59,16 @@ public final class BodyAttacks {
     public void reset() { pending = null; active = null; thorns.clear(); timer = 400; escalated = false; readyAt.clear(); }
 
     /** Debug/command: fire a specific attack now (skips cooldown, keeps the warning). */
-    public void force(Kind k) {
+    public void force(Kind k, RandomSource random) {
+        if (k == Kind.BILE_RAIN) pickLanes(random);
         pending = k;
         warnLeft = k.warn;
+    }
+
+    private void pickLanes(RandomSource random) {
+        java.util.List<Integer> all = new java.util.ArrayList<>(java.util.List.of(0, 1, 2, 3, 4, 5));
+        java.util.Collections.shuffle(all, new java.util.Random(random.nextLong()));
+        lanes = all.subList(0, 3).stream().mapToInt(Integer::intValue).toArray();
     }
 
     public void tick(ServerLevel level, MatrisEncounter enc, List<ServerPlayer> players) {
@@ -113,9 +120,7 @@ public final class BodyAttacks {
         switch (k) {
             case PERISTALSIS -> players.forEach(p -> SBNetwork.sendScreenFx(p, SBNetwork.FX_SHAKE, k.warn));
             case BILE_RAIN -> {
-                java.util.List<Integer> all = new java.util.ArrayList<>(java.util.List.of(0, 1, 2, 3, 4, 5));
-                java.util.Collections.shuffle(all, new java.util.Random(level.random.nextLong()));
-                lanes = all.subList(0, 3).stream().mapToInt(Integer::intValue).toArray();
+                pickLanes(level.random);
                 for (int lane : lanes) laneParticles(level, o, lane, SBParticles.BILE_DRIP.get(), 40);
             }
             case RETINA_FLASH -> AnimFx.serverBurst(level, SBParticles.EYE_GLINT.get(), Vec3.atCenterOf(o.above(40)), 60, 12, 0.05);
@@ -140,7 +145,11 @@ public final class BodyAttacks {
                     }
                 }
             }
-            case BILE_RAIN -> { active = k; activeLeft = 80; }
+            case BILE_RAIN -> {
+                if (lanes.length == 0) pickLanes(level.random);
+                active = k;
+                activeLeft = 80;
+            }
             case RETINA_FLASH -> retinaFlashFrom(level, Vec3.atCenterOf(enc.origin().above(40)), players);
             case ROOT_GRIP -> {
                 for (ServerPlayer p : players) {
@@ -164,6 +173,7 @@ public final class BodyAttacks {
 
     private void activeTick(ServerLevel level, MatrisEncounter enc, List<ServerPlayer> players) {
         if (active == Kind.BILE_RAIN && activeLeft % 2 == 0) {
+            if (lanes.length == 0) return;
             BlockPos o = enc.origin();
             int lane = lanes[level.random.nextInt(lanes.length)];
             Vec3 a = Vec3.atCenterOf(o), b = Vec3.atCenterOf(ArenaLayout.satellite(o, lane));

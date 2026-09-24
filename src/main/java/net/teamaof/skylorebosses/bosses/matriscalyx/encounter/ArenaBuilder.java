@@ -20,6 +20,9 @@ import net.teamaof.skylorebosses.bosses.matriscalyx.registry.MatrisBlocks;
  */
 public final class ArenaBuilder {
     private static final byte AIR = 0, FLESH = 1, HARD = 2, MEMBRANE = 3, VEIN = 4, CORE = 5, RIB = 6, CACHE = 7, VENT = 8;
+    /** Remove a previously placed rib in the arm's volume. Not a palette entry. */
+    private static final byte CARVE_RIB = 9;
+    private final BlockPos anchorPos;
     private final LongArrayList positions = new LongArrayList();
     private final ByteArrayList kinds = new ByteArrayList();
     private final List<BlockPos> vents = new ArrayList<>();
@@ -27,6 +30,7 @@ public final class ArenaBuilder {
     private BlockState[] palette;
 
     public ArenaBuilder(BlockPos origin, boolean dome) {
+        anchorPos = ArenaLayout.anchor(origin);
         // heart island
         island(origin, ArenaLayout.HEART_RADIUS, 22, 1.0, 7L);
         heartMass(origin);
@@ -38,7 +42,7 @@ public final class ArenaBuilder {
         }
         arch(origin, 36, 16, 0.0);
         arch(origin, 36, 16, Math.PI / 2);
-        anchorPlatform(ArenaLayout.anchor(origin));
+        anchorPlatform(anchorPos);
 
         for (ArmType t : ArmType.values()) {
             BlockPos c = ArenaLayout.satellite(origin, t.slot);
@@ -46,12 +50,20 @@ public final class ArenaBuilder {
             double squash = t == ArmType.CHARGING ? 0.45 : 1.0;
             island(c, r, 12 + r / 3, squash, 31L * (t.slot + 1));
             double facing = Math.atan2(origin.getZ() - c.getZ(), origin.getX() - c.getX());
+            int clearR = clearRadius(t);
+            int clearH = clearHeight(t);
             if (t != ArmType.CHARGING) {
-                arch(c, (int) (r * 0.7), 10, facing + Math.PI / 2);
-                arch(c, (int) (r * 0.55), 7, facing);
+                // Crown sits just above the mesh. Bone still inside the body cylinder is omitted.
+                int peak = clearH + 3;
+                arch(c, (int) (r * 0.7), peak, facing + Math.PI / 2, c, clearR, clearH);
+                arch(c, (int) (r * 0.55), Math.max(peak - 4, clearH), facing, c, clearR, clearH);
             } else {
-                arch(c.offset(0, 0, 0), 12, 8, Math.PI / 2);
+                // Lane runs along X. A center arch would cross the crawler, so the ribs stand on the flanks.
+                int flank = 8;
+                arch(c.offset(0, 0, flank), 12, 8, 0.0, c, clearR, clearH);
+                arch(c.offset(0, 0, -flank), 12, 8, 0.0, c, clearR, clearH);
             }
+            carveRibs(c, clearR, clearH);
             vent(c.offset(t == ArmType.CHARGING ? 22 : 8, 1, t == ArmType.CHARGING ? 0 : 8));
             // landmark vein from the satellite's underside back to the heart
             line(c.below(8), origin.below(18), VEIN, 1);
@@ -64,21 +76,43 @@ public final class ArenaBuilder {
     public int total() { return positions.size(); }
     public int placed() { return cursor; }
 
+    /** Floor under the return point, placed immediately so an arrival does not fall while the dome is still queued. */
+    public void placeAnchor(ServerLevel level) {
+        ensurePalette();
+        BlockPos a = anchorPos;
+        for (int dx = -3; dx <= 3; dx++) for (int dz = -3; dz <= 3; dz++) {
+            byte k = Math.abs(dx) == 3 || Math.abs(dz) == 3 ? RIB : FLESH;
+            level.setBlock(a.offset(dx, -1, dz), palette[k], Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+        }
+        for (int dy = 0; dy < 6; dy++) level.setBlock(a.offset(0, dy, 0), palette[AIR], Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+        level.setBlock(a.offset(2, 0, 2), palette[CACHE], Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+    }
+
+    private void ensurePalette() {
+        if (palette != null) return;
+        palette = new BlockState[]{Blocks.AIR.defaultBlockState(), MatrisBlocks.FLESH.get().defaultBlockState(),
+                MatrisBlocks.HARDENED_FLESH.get().defaultBlockState(), MatrisBlocks.FLESH_MEMBRANE.get().defaultBlockState(),
+                MatrisBlocks.GLOW_VEIN.get().defaultBlockState(), MatrisBlocks.HEART_CORE.get().defaultBlockState(),
+                MatrisBlocks.RIB_BONE.get().defaultBlockState(), MatrisBlocks.SYRINGE_CACHE.get().defaultBlockState(),
+                MatrisBlocks.SPORE_VENT.get().defaultBlockState()};
+    }
+
     /** Place up to {@code budget} blocks. */
     public void step(ServerLevel level, int budget) {
-        if (palette == null) {
-            palette = new BlockState[]{Blocks.AIR.defaultBlockState(), MatrisBlocks.FLESH.get().defaultBlockState(),
-                    MatrisBlocks.HARDENED_FLESH.get().defaultBlockState(), MatrisBlocks.FLESH_MEMBRANE.get().defaultBlockState(),
-                    MatrisBlocks.GLOW_VEIN.get().defaultBlockState(), MatrisBlocks.HEART_CORE.get().defaultBlockState(),
-                    MatrisBlocks.RIB_BONE.get().defaultBlockState(), MatrisBlocks.SYRINGE_CACHE.get().defaultBlockState(),
-                    MatrisBlocks.SPORE_VENT.get().defaultBlockState()};
-        }
+        ensurePalette();
         BlockPos.MutableBlockPos p = new BlockPos.MutableBlockPos();
         int end = Math.min(positions.size(), cursor + budget);
         for (; cursor < end; cursor++) {
             p.set(positions.getLong(cursor));
             if (!level.isInWorldBounds(p)) continue;
-            level.setBlock(p, palette[kinds.getByte(cursor)], Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+            byte kind = kinds.getByte(cursor);
+            if (kind == CARVE_RIB) {
+                if (level.getBlockState(p).is(MatrisBlocks.RIB_BONE.get())) {
+                    level.setBlock(p, Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+                }
+            } else {
+                level.setBlock(p, palette[kind], Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+            }
         }
     }
 
@@ -134,13 +168,64 @@ public final class ArenaBuilder {
 
     /** Rib arch: a semicircle of bone 2x2 thick, spanning 2*half along the given yaw. */
     private void arch(BlockPos c, int half, int height, double yaw) {
+        arch(c, half, height, yaw, c, 0, 0);
+    }
+
+    /**
+     * @param avoid island center the appendage occupies
+     * @param clearRadius horizontal radius of the model cylinder; 0 disables the cut
+     * @param clearHeight blocks below this, inside the radius, are not bone
+     */
+    private void arch(BlockPos c, int half, int height, double yaw, BlockPos avoid, int clearRadius, int clearHeight) {
         double cx = Math.cos(yaw), cz = Math.sin(yaw);
+        int r2 = clearRadius * clearRadius;
         for (double t = 0; t <= Math.PI; t += 0.6 / Math.max(half, height)) {
             double along = Math.cos(t) * half;
             int y = (int) Math.round(Math.sin(t) * height);
             int x = (int) Math.round(cx * along), z = (int) Math.round(cz * along);
-            for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) put(c.offset(x + a, y + 1, z + b), RIB);
+            for (int a = 0; a < 2; a++) for (int b = 0; b < 2; b++) {
+                BlockPos at = c.offset(x + a, y + 1, z + b);
+                if (clearRadius > 0 && at.getY() - avoid.getY() < clearHeight) {
+                    int dx = at.getX() - avoid.getX(), dz = at.getZ() - avoid.getZ();
+                    if (dx * dx + dz * dz < r2) continue;
+                }
+                put(at, RIB);
+            }
         }
+    }
+
+    /** Drop rib bone already built through an appendage. Flesh on the island surface is left in place. */
+    private void carveRibs(BlockPos center, int radius, int height) {
+        int r2 = radius * radius;
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                if (dx * dx + dz * dz >= r2) continue;
+                for (int y = 1; y < height; y++) put(center.offset(dx, y, dz), (byte) CARVE_RIB);
+            }
+        }
+    }
+
+    /** Unscaled Blockbench visible bounds, times {@link ArmType#renderScale}, plus a one-block margin. */
+    private static int clearRadius(ArmType t) {
+        float width = switch (t) {
+            case NERVE -> 7f;
+            case GRASPING -> 6f;
+            case SPITTING, SLAM -> 7f;
+            case MOUTH -> 7f;
+            case CHARGING -> 10f;
+        };
+        return Math.round(width * t.renderScale / 2f) + 1;
+    }
+
+    private static int clearHeight(ArmType t) {
+        float height = switch (t) {
+            case NERVE -> 10f;
+            case GRASPING -> 12f;
+            case SPITTING, SLAM -> 9f;
+            case MOUTH -> 10f;
+            case CHARGING -> 3.5f;
+        };
+        return Math.round(height * t.renderScale) + 1;
     }
 
     private void anchorPlatform(BlockPos a) {

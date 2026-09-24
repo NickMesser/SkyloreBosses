@@ -17,6 +17,10 @@ public final class MatrisAttachments {
     public static final Supplier<AttachmentType<Integer>> INFECTION = SBRegistries.ATTACHMENT_TYPES.register("infection",
             () -> AttachmentType.builder(() -> 0).serialize(Codec.INT).copyOnDeath().build());
 
+    /** Fractional infection left after a multiplier, so a 0.5 immunity can slow a +1 tick. */
+    public static final Supplier<AttachmentType<Float>> INFECTION_FRACTION = SBRegistries.ATTACHMENT_TYPES.register("infection_fraction",
+            () -> AttachmentType.builder(() -> 0f).serialize(Codec.FLOAT).copyOnDeath().build());
+
     private MatrisAttachments() {}
 
     /** Forces class init so the entries are queued before registration. */
