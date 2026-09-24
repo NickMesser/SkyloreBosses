@@ -52,6 +52,10 @@ public final class MatrisBossBar {
         event.setVisible(v);
     }
 
+    public void removePlayer(ServerPlayer p) {
+        event.removePlayer(p);
+    }
+
     public void clear() {
         event.removeAllPlayers();
     }

@@ -97,8 +97,14 @@ public class CalyxBloom extends Monster implements GeoEntity {
     public float beamLength() { return entityData.get(BEAM_LEN); }
 
     public void setMaxHp(float hp) {
-        getAttribute(Attributes.MAX_HEALTH).setBaseValue(hp);
-        setHealth(hp);
+        setMaxHp(hp, hp);
+    }
+
+    /** {@code current} is the saved health. A missing Bloom must not come back full. */
+    public void setMaxHp(float max, float current) {
+        var maxHealth = getAttribute(Attributes.MAX_HEALTH);
+        if (maxHealth != null) maxHealth.setBaseValue(max);
+        setHealth(Math.min(max, current));
     }
 
     public Vec3 eye() {

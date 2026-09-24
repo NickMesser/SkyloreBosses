@@ -2,6 +2,8 @@ package net.teamaof.skylorebosses.bosses.matriscalyx.entity.projectile;
 
 import javax.annotation.Nullable;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -31,9 +33,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 /** Spitting Arm volley and Bile Rain projectile: damage + infection, leaves a slowing bile puddle. */
 public class BileGlob extends ThrowableProjectile implements GeoEntity {
     private static final RawAnimation FLY = RawAnimation.begin().thenLoop("animation.bile_glob.fly");
+    private static final EntityDataAccessor<Float> DAMAGE = SynchedEntityData.defineId(BileGlob.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> GRAVITY = SynchedEntityData.defineId(BileGlob.class, EntityDataSerializers.FLOAT);
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private float damage = 6f;
-    private double gravity = 0.02;
 
     public BileGlob(EntityType<? extends BileGlob> type, Level level) {
         super(type, level);
@@ -44,22 +46,25 @@ public class BileGlob extends ThrowableProjectile implements GeoEntity {
         setOwner(owner);
         setPos(pos.x, pos.y, pos.z);
         setDeltaMovement(velocity);
-        this.damage = damage;
+        this.entityData.set(DAMAGE, damage);
     }
 
     /** Bile Rain globs fall faster and hit a little softer. */
     public BileGlob rain() {
-        gravity = 0.06;
-        damage = 5f;
+        this.entityData.set(GRAVITY, 0.06f);
+        this.entityData.set(DAMAGE, 5f);
         return this;
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder b) {}
+    protected void defineSynchedData(SynchedEntityData.Builder b) {
+        b.define(DAMAGE, 6f);
+        b.define(GRAVITY, 0.02f);
+    }
 
     @Override
     protected double getDefaultGravity() {
-        return gravity;
+        return this.entityData.get(GRAVITY);
     }
 
     @Override
@@ -80,7 +85,7 @@ public class BileGlob extends ThrowableProjectile implements GeoEntity {
     protected void onHitEntity(EntityHitResult hit) {
         super.onHitEntity(hit);
         Entity e = hit.getEntity();
-        e.hurt(damageSources().mobProjectile(this, getOwner() instanceof LivingEntity le ? le : null), damage);
+        e.hurt(damageSources().mobProjectile(this, getOwner() instanceof LivingEntity le ? le : null), this.entityData.get(DAMAGE));
         if (e instanceof Player p) Infection.add(p, 4);
     }
 
@@ -107,15 +112,15 @@ public class BileGlob extends ThrowableProjectile implements GeoEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        tag.putFloat("Damage", damage);
-        tag.putDouble("Grav", gravity);
+        tag.putFloat("Damage", this.entityData.get(DAMAGE));
+        tag.putDouble("Grav", this.entityData.get(GRAVITY));
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        damage = tag.getFloat("Damage");
-        gravity = tag.getDouble("Grav");
+        if (tag.contains("Damage")) this.entityData.set(DAMAGE, tag.getFloat("Damage"));
+        if (tag.contains("Grav")) this.entityData.set(GRAVITY, (float) tag.getDouble("Grav"));
     }
 
     @Override

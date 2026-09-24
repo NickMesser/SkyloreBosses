@@ -39,8 +39,8 @@ public interface InfectionBridge {
                 var key = h.key().location();
                 if (!key.getNamespace().equals(IMMORTUOS)) return;
                 String path = key.getPath();
-                if (path.contains("infect") || path.contains("calyx") || path.contains("parasite")) infected.add(h);
                 if (path.contains("immun") || path.contains("cure") || path.contains("resist") || path.contains("vaccin")) protectedBy.add(h);
+                else if (path.contains("infect") || path.contains("calyx") || path.contains("parasite")) infected.add(h);
             });
             SkyloreBosses.LOG.info("Immortuos bridge: {} infection effects, {} protective effects", infected.size(), protectedBy.size());
         }

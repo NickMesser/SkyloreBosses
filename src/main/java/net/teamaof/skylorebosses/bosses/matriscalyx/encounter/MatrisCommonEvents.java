@@ -25,7 +25,10 @@ public final class MatrisCommonEvents {
 
     public static void init() {
         TickEvent.SERVER_LEVEL_POST.register(MatrisEncounter::tickLevel);
-        PlayerEvent.PLAYER_JOIN.register(p -> MatrisNetwork.sendInfection(p, Infection.get(p)));
+        PlayerEvent.PLAYER_JOIN.register(p -> {
+            MatrisNetwork.sendInfection(p, Infection.get(p));
+            MatrisEncounter.grantPending(p);
+        });
         PlayerEvent.PLAYER_RESPAWN.register((p, conqueredEnd, reason) -> MatrisNetwork.sendInfection(p, Infection.get(p)));
         PlayerEvent.CHANGE_DIMENSION.register(MatrisCommonEvents::onChangeDimension);
         EntityEvent.LIVING_DEATH.register((entity, source) -> {
@@ -42,6 +45,15 @@ public final class MatrisCommonEvents {
 
     private static void onChangeDimension(ServerPlayer p, ResourceKey<Level> from, ResourceKey<Level> to) {
         MatrisNetwork.sendInfection(p, Infection.get(p));
+        // Left the fight world: strip the boss bar immediately so it never sticks in another dimension.
+        if (from.equals(PROTO_WORLD) && !to.equals(PROTO_WORLD)) {
+            ServerLevel fight = p.server.getLevel(PROTO_WORLD);
+            if (fight != null) {
+                MatrisEncounter e = MatrisEncounter.get(fight);
+                if (e != null) e.dropPlayer(p);
+            }
+            return;
+        }
         if (!to.equals(PROTO_WORLD)) return;
         MatrisEncounter.award(p, "enter_proto_world");
         ServerLevel level = p.server.getLevel(PROTO_WORLD);

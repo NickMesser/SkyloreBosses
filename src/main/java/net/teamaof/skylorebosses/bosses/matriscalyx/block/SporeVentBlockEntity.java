@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.teamaof.skylorebosses.bosses.matriscalyx.MatrisConfig;
+import net.teamaof.skylorebosses.bosses.matriscalyx.encounter.MatrisEncounter;
 import net.teamaof.skylorebosses.bosses.matriscalyx.encounter.Infection;
 import net.teamaof.skylorebosses.bosses.matriscalyx.entity.add.AbstractAdd;
 import net.teamaof.skylorebosses.bosses.matriscalyx.entity.add.SporeThrall;
@@ -66,6 +67,8 @@ public class SporeVentBlockEntity extends BlockEntity implements GeoBlockEntity 
     private void tick(ServerLevel level) {
         if (hp < 0) hp = MatrisConfig.VENT_HP.get();
         if (broken || !active) return;
+        MatrisEncounter enc = MatrisEncounter.get(level);
+        if (enc != null && (enc.state() == MatrisEncounter.State.BUILDING || enc.state() == MatrisEncounter.State.DORMANT)) return;
         if (openTicks > 0) openTicks--;
         Vec3 top = spout();
         if (level.getNearestPlayer(top.x, top.y, top.z, 48, p -> !((Player) p).isSpectator()) == null) return;

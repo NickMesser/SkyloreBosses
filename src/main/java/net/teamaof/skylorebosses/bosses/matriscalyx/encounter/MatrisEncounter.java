@@ -78,10 +78,16 @@ public final class MatrisEncounter extends SavedData {
     private float cadence = 1f;
     private UUID bloomId;
     private float bloomMax;
+    /** Remaining Bloom health. 0 means a newly spawned Bloom starts full. */
+    private float bloomHp;
+    /** Active state to restore after a dormant timeout. NONE means the arena has never started. */
+    private State pausedFrom = State.NONE;
     private int deaths;
     private final List<BlockPos> vents = new ArrayList<>();
     private final Set<UUID> syringeClaims = new HashSet<>();
     private final Set<UUID> participantsEver = new HashSet<>();
+    /** Participants who were offline when the Bloom died. */
+    private final Set<UUID> pendingVictory = new HashSet<>();
     private boolean forced;
 
     private transient ArenaBuilder builder;
@@ -127,16 +133,11 @@ public final class MatrisEncounter extends SavedData {
     }
 
     /** Place every remaining arena block now (used when a player arrives so nobody falls into an unbuilt arena). */
+    /** Put a floor under arrivals. The rest of the arena keeps placing at the normal per-tick budget. */
     public void finishBuild(ServerLevel level) {
         if (state != State.BUILDING) return;
-        if (builder == null) {
-            builder = new ArenaBuilder(origin, dome);
-            vents.clear();
-            vents.addAll(builder.vents());
-        }
-        while (!builder.done()) builder.step(level, 100000);
-        stateTicks = 0;
-        tickBuilding(level);
+        ensureBuilder();
+        if (builder != null) builder.placeAnchor(level);
     }
 
     /** Wake a dormant encounter immediately (commands, pack triggers). */
@@ -149,6 +150,11 @@ public final class MatrisEncounter extends SavedData {
             fightTicks = 0;
             deaths = 0;
             syringeClaims.clear();
+            participantsEver.clear();
+            pausedFrom = State.NONE;
+            bloomHp = 0;
+            discard(level, bloomId);
+            bloomId = null;
             attacks.reset();
             setState(State.AWAKENING);
             forceChunks(level, true);
@@ -178,6 +184,10 @@ public final class MatrisEncounter extends SavedData {
         attacks.reset();
         bar.clear();
         killCount = 0;
+        pausedFrom = State.NONE;
+        bloomHp = 0;
+        participantsEver.clear();
+        pendingVictory.clear();
         setState(origin == null ? State.NONE : (builder != null && !builder.done() ? State.BUILDING : State.DORMANT));
         if (origin != null) MatrisEvents.RESET.invoker().reset(level, origin, reason);
     }
@@ -185,8 +195,12 @@ public final class MatrisEncounter extends SavedData {
     /** Designer command: advance to the next beat. */
     public void skipPhase(ServerLevel level) {
         switch (state) {
-            case BUILDING -> { while (!builder.done()) builder.step(level, 50000); }
-            case DORMANT, VICTORY -> awaken(level);
+            case BUILDING -> {
+                ensureBuilder();
+                while (builder != null && !builder.done()) builder.step(level, 50000);
+            }
+            case DORMANT -> { if (resumable(pausedFrom)) resume(level); else awaken(level); }
+            case VICTORY -> awaken(level);
             case AWAKENING -> { for (ArmType t : ArmType.values()) if (armIds[t.slot] == null) spawnArm(level, t); setState(State.LIMBS); }
             case LIMBS -> {
                 for (ArmType t : ArmType.values()) {
@@ -224,7 +238,10 @@ public final class MatrisEncounter extends SavedData {
             case BUILDING -> tickBuilding(level);
             case DORMANT -> {
                 if (stateTicks % 10 == 0 && !level.getEntitiesOfClass(ServerPlayer.class,
-                        new AABB(ArenaLayout.anchor(origin)).inflate(20), p -> !p.isSpectator()).isEmpty()) awaken(level);
+                        new AABB(ArenaLayout.anchor(origin)).inflate(20), p -> !p.isSpectator()).isEmpty()) {
+                    if (resumable(pausedFrom)) resume(level);
+                    else awaken(level);
+                }
             }
             case AWAKENING -> {
                 if (stateTicks % 40 == 0) {
@@ -245,6 +262,7 @@ public final class MatrisEncounter extends SavedData {
             }
             default -> {}
         }
+        if (state != State.NONE && state != State.DORMANT && state != State.VICTORY) forceChunks(level, true);
         if (isActive()) tickActive(level);
     }
 
@@ -252,12 +270,14 @@ public final class MatrisEncounter extends SavedData {
         return state == State.AWAKENING || state == State.LIMBS || state == State.HEART_SPLIT || state == State.BLOOM;
     }
 
+    /** Drop a player from the boss bar (e.g. they left the fight dimension). */
+    public void dropPlayer(ServerPlayer p) {
+        bar.removePlayer(p);
+    }
+
     private void tickBuilding(ServerLevel level) {
-        if (builder == null) {
-            builder = new ArenaBuilder(origin, dome);
-            vents.clear();
-            vents.addAll(builder.vents());
-        }
+        ensureBuilder();
+        if (builder == null) return;
         builder.step(level, 6000);
         if (stateTicks % 20 == 0) {
             for (ServerPlayer p : participants(level)) {
@@ -276,7 +296,9 @@ public final class MatrisEncounter extends SavedData {
     private void tickActive(ServerLevel level) {
         List<ServerPlayer> players = participants(level);
         if (players.isEmpty()) {
-            // nobody here: pause everything; after the timeout the fight goes dormant (kills stay)
+            // Nobody in this arena (left the dimension or flew out): hide the bar and pause.
+            // After the timeout the fight goes fully dormant (kills stay).
+            bar.clear();
             if (++idleTicks > MatrisConfig.DORMANT_TIMEOUT_TICKS.get()) goDormant(level);
             return;
         }
@@ -303,11 +325,54 @@ public final class MatrisEncounter extends SavedData {
     private void goDormant(ServerLevel level) {
         idleTicks = 0;
         bar.clear();
-        SkyloreBosses.LOG.info("Matris encounter at {} went dormant (no players)", origin);
+        snapshotBloom(level);
+        pausedFrom = state;
+        for (int i = 0; i < armIds.length; i++) {
+            Entity e = armIds[i] == null ? null : level.getEntity(armIds[i]);
+            if (e instanceof AbstractRootedArm a && a.isAlive()) armHp[i] = a.getHealth();
+            discard(level, armIds[i]);
+            armIds[i] = null;
+        }
+        discard(level, bloomId);
+        bloomId = null;
+        if (origin != null) {
+            for (AbstractAdd add : level.getEntitiesOfClass(AbstractAdd.class, arenaBox())) add.discard();
+            forEachVent(level, v -> v.setActive(false));
+        }
+        SkyloreBosses.LOG.info("Matris encounter at {} paused at {} (no players)", origin, pausedFrom);
         setState(State.DORMANT);
-        // arms keep their HP and kills stay killed; entities are despawned and respawned on wake
-        for (UUID id : armIds) discard(level, id);
         forceChunks(level, false);
+    }
+
+    /** Continue a paused fight. Kills, cadence and syringe claims stay. Armour plates regrow with the new entities. */
+    private void resume(ServerLevel level) {
+        State back = pausedFrom;
+        pausedFrom = State.NONE;
+        if (killCount >= 3) attacks.escalate();
+        setState(back);
+        forceChunks(level, true);
+        boolean ventsOn = back == State.AWAKENING || back == State.LIMBS;
+        forEachVent(level, v -> v.setActive(ventsOn));
+        if (back == State.LIMBS || back == State.BLOOM) {
+            for (ArmType t : ArmType.values()) if (armAlive[t.slot]) spawnArm(level, t);
+        }
+        if (back == State.BLOOM) spawnBloom(level);
+    }
+
+    private static boolean resumable(State s) {
+        return s == State.AWAKENING || s == State.LIMBS || s == State.HEART_SPLIT || s == State.BLOOM;
+    }
+
+    private void ensureBuilder() {
+        if (builder != null || origin == null) return;
+        builder = new ArenaBuilder(origin, dome);
+        vents.clear();
+        vents.addAll(builder.vents());
+    }
+
+    private void snapshotBloom(ServerLevel level) {
+        Entity e = bloomId == null ? null : level.getEntity(bloomId);
+        if (e instanceof CalyxBloom b && b.isAlive()) bloomHp = b.getHealth();
     }
 
     private void tickLimbs(ServerLevel level) {
@@ -350,6 +415,7 @@ public final class MatrisEncounter extends SavedData {
         if (stateTicks % 5 != 0) return;
         Entity e = bloomId == null ? null : level.getEntity(bloomId);
         if (e instanceof CalyxBloom b && b.isAlive()) {
+            bloomHp = b.getHealth();
             bar.setBloom(b.getHealth() / b.getMaxHealth());
             if (b.getHealth() < b.getMaxHealth() * 0.5f && stateTicks % 200 == 0) {
                 // two heart vents re-open for the second half
@@ -406,9 +472,11 @@ public final class MatrisEncounter extends SavedData {
         BlockPos at = ArenaLayout.heart(origin);
         b.moveTo(at.getX() + 0.5, at.getY(), at.getZ() + 0.5, 180, 0);
         bloomMax = (float) (MatrisConfig.BLOOM_HP.get() * hpMultiplier(level));
-        b.setMaxHp(bloomMax);
+        float hp = bloomHp > 0 ? Math.min(bloomMax, bloomHp) : bloomMax;
+        b.setMaxHp(bloomMax, hp);
         level.addFreshEntity(b);
         bloomId = b.getUUID();
+        bloomHp = b.getHealth();
         MatrisEvents.BLOOM_EMERGED.invoker().emerged(level, origin, b);
         setDirty();
     }
@@ -471,22 +539,47 @@ public final class MatrisEncounter extends SavedData {
         attacks.reset();
         forEachVent(level, v -> v.setActive(false));
         for (AbstractAdd add : level.getEntitiesOfClass(AbstractAdd.class, arenaBox())) add.discard();
-        List<ServerPlayer> ps = participants(level);
-        String fn = MatrisConfig.VICTORY_FUNCTION.get();
-        for (ServerPlayer p : ps) {
-            award(p, "bloom_slain");
-            p.getInventory().placeItemBackInInventory(new ItemStack(MatrisItems.CALYX_HEART.get()));
-            Infection.set(p, 0);
-            title(p, "matris_calyx.title.victory", "matris_calyx.title.victory.sub");
-            AnimFx.play(level, p.position(), "matris_calyx.encounter.victory", 1f, 1f);
-            if (!fn.isEmpty()) {
-                var server = level.getServer();
-                server.getFunctions().get(ResourceLocation.parse(fn)).ifPresent(f ->
-                        server.getFunctions().execute(f, p.createCommandSourceStack().withSuppressedOutput().withPermission(2)));
+        Set<UUID> reward = new HashSet<>(participantsEver);
+        for (ServerPlayer p : participants(level)) reward.add(p.getUUID());
+        List<ServerPlayer> rewarded = new ArrayList<>();
+        for (UUID id : reward) {
+            ServerPlayer p = level.getServer().getPlayerList().getPlayer(id);
+            if (p != null) {
+                grantVictory(level, p);
+                rewarded.add(p);
+            } else {
+                pendingVictory.add(id);
             }
         }
-        MatrisEvents.VICTORY.invoker().victory(level, origin, ps, new MatrisEvents.EncounterStats(fightTicks, nerveFirst, deaths));
-        BossEvents.DEFEATED.invoker().defeated(level, MatrisCalyxBoss.ID, origin, ps);
+        setDirty();
+        MatrisEvents.VICTORY.invoker().victory(level, origin, rewarded, new MatrisEvents.EncounterStats(fightTicks, nerveFirst, deaths));
+        BossEvents.DEFEATED.invoker().defeated(level, MatrisCalyxBoss.ID, origin, rewarded);
+    }
+
+    /** Heart, advancement, infection clear and victory function for one participant. */
+    private void grantVictory(ServerLevel level, ServerPlayer p) {
+        award(p, "bloom_slain");
+        p.getInventory().placeItemBackInInventory(new ItemStack(MatrisItems.CALYX_HEART.get()));
+        Infection.set(p, 0);
+        title(p, "matris_calyx.title.victory", "matris_calyx.title.victory.sub");
+        AnimFx.play(p.level(), p.position(), "matris_calyx.encounter.victory", 1f, 1f);
+        String fn = MatrisConfig.VICTORY_FUNCTION.get();
+        if (!fn.isEmpty()) {
+            var server = level.getServer();
+            server.getFunctions().get(ResourceLocation.parse(fn)).ifPresent(f ->
+                    server.getFunctions().execute(f, p.createCommandSourceStack().withSuppressedOutput().withPermission(2)));
+        }
+    }
+
+    /** Pay a participant who was offline when the Bloom died. */
+    public static void grantPending(ServerPlayer p) {
+        for (ServerLevel level : p.server.getAllLevels()) {
+            MatrisEncounter e = get(level);
+            if (e != null && e.pendingVictory.remove(p.getUUID())) {
+                e.grantVictory(level, p);
+                e.setDirty();
+            }
+        }
     }
 
     public void onPlayerDeath(ServerPlayer p) {
@@ -615,12 +708,16 @@ public final class MatrisEncounter extends SavedData {
         }
         if (bloomId != null) tag.putUUID("Bloom", bloomId);
         tag.putFloat("BloomMax", bloomMax);
+        tag.putFloat("BloomHp", bloomHp);
+        if (pausedFrom != State.NONE) tag.putString("PausedFrom", pausedFrom.name());
         ListTag vl = new ListTag();
         for (BlockPos v : vents) vl.add(LongTag.valueOf(v.asLong()));
         tag.put("Vents", vl);
         ListTag cl = new ListTag();
         for (UUID u : syringeClaims) cl.add(NbtUtils.createUUID(u));
         tag.put("Claims", cl);
+        tag.put("Participants", uuids(participantsEver));
+        tag.put("PendingVictory", uuids(pendingVictory));
         return tag;
     }
 
@@ -641,7 +738,7 @@ public final class MatrisEncounter extends SavedData {
         e.nerveFirst = tag.getBoolean("NerveFirst");
         e.cadence = tag.contains("Cadence") ? tag.getFloat("Cadence") : 1f;
         e.deaths = tag.getInt("Deaths");
-        e.forced = tag.getBoolean("Forced");
+        // Chunk tickets are not restored by the saved flag. The next active tick re-applies them.
         for (int i = 0; i < 6; i++) {
             CompoundTag a = tag.getCompound("Arm" + i);
             e.armIds[i] = a.hasUUID("Id") ? a.getUUID("Id") : null;
@@ -650,9 +747,31 @@ public final class MatrisEncounter extends SavedData {
         }
         e.bloomId = tag.hasUUID("Bloom") ? tag.getUUID("Bloom") : null;
         e.bloomMax = tag.getFloat("BloomMax");
+        e.bloomHp = tag.getFloat("BloomHp");
+        if (tag.contains("PausedFrom")) {
+            try {
+                e.pausedFrom = State.valueOf(tag.getString("PausedFrom"));
+            } catch (IllegalArgumentException ex) {
+                e.pausedFrom = State.NONE;
+            }
+        }
+        readUuids(tag.getList("Participants", Tag.TAG_INT_ARRAY), e.participantsEver);
+        readUuids(tag.getList("PendingVictory", Tag.TAG_INT_ARRAY), e.pendingVictory);
+        e.forced = false;
+        if (e.killCount >= 3) e.attacks.escalate();
         for (Tag t : tag.getList("Vents", Tag.TAG_LONG)) e.vents.add(BlockPos.of(((LongTag) t).getAsLong()));
-        for (Tag t : tag.getList("Claims", Tag.TAG_INT_ARRAY)) e.syringeClaims.add(NbtUtils.loadUUID(t));
+        readUuids(tag.getList("Claims", Tag.TAG_INT_ARRAY), e.syringeClaims);
         // a building arena restarts its queue (placement is idempotent)
         return e;
+    }
+
+    private static ListTag uuids(Set<UUID> ids) {
+        ListTag list = new ListTag();
+        for (UUID u : ids) list.add(NbtUtils.createUUID(u));
+        return list;
+    }
+
+    private static void readUuids(ListTag list, Set<UUID> into) {
+        for (Tag t : list) into.add(NbtUtils.loadUUID(t));
     }
 }

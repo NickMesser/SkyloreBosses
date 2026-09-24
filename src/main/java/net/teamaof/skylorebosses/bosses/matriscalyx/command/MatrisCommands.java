@@ -67,7 +67,7 @@ public final class MatrisCommands {
                         .executes(c -> withEnc(c, e -> {
                             String k = StringArgumentType.getString(c, "kind");
                             BodyAttacks.Kind kind = BodyAttacks.Kind.valueOf(k.toUpperCase(java.util.Locale.ROOT));
-                            e.attacks().force(kind);
+                            e.attacks().force(kind, c.getSource().getLevel().getRandom());
                             return "forcing body attack " + kind.id();
                         }))))
                 .then(Commands.literal("tp").executes(MatrisCommands::tp))
