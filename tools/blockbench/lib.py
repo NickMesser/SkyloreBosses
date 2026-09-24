@@ -196,6 +196,11 @@ class Model:
             with open(p, "w") as f:
                 json.dump(v, f, indent=2)
             self._ppaths[k] = p.replace("\\", "/")
+        # risky_eval needs an open project to wrap its undo step; the MCP opens one for us
+        try:
+            client.call("create_project", {"name": self.name, "format": "animated_entity_model"})
+        except RuntimeError:
+            client.call("create_project", {"name": self.name, "format": "bedrock"})
         r = client.eval(self.js())
         print(self.name, "->", r)
         raw = json.loads(client.eval(EXPORT_JS))
@@ -214,7 +219,7 @@ class Model:
 BUILD_JS = r"""
 (function(){
 var D = __DATA__;
-newProject(Formats.animated_entity_model);
+if (!(Project && Project.name === D.name && Cube.all.length === 0)) newProject(Formats.animated_entity_model || Formats.bedrock);
 Project.name = D.name; Project.geometry_name = D.name;
 Project.box_uv = false; Project.texture_width = 256; Project.texture_height = 256;
 var tex = new Texture({name: D.name + '.png'}).fromDataURL(D.tex).add(false);
@@ -376,7 +381,18 @@ def render(client, name, shots, size=(900, 900)):
         client.call("delete_offscreen_view", {"view": "mc_render"})
     except Exception:
         pass
-    client.call("create_offscreen_view", {"id": "mc_render", "width": size[0], "height": size[1], "copy_view": "none"})
+    try:
+        client.call("create_offscreen_view", {"id": "mc_render", "width": size[0], "height": size[1], "copy_view": "none"})
+    except RuntimeError:
+        # older/newer plugin builds without offscreen views: aim the main viewport and capture it
+        for label, pos, target in shots:
+            client.call("set_camera_angle", {"position": pos, "target": target, "projection": "perspective"})
+            _, res = client.call("capture_screenshot", {})
+            for c in res.get("content", []):
+                if c.get("type") == "image":
+                    with open(os.path.join(d, f"{label}.png"), "wb") as f:
+                        f.write(base64.b64decode(c["data"]))
+        return
     for label, pos, target in shots:
         client.call("set_camera_angle", {"view": "mc_render", "position": pos, "target": target, "projection": "perspective", "fov": 45})
         _, res = client.call("capture_screenshot", {"view": "mc_render"})

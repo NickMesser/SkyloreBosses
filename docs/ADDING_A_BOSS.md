@@ -7,7 +7,7 @@ Use Matris Calyx as the template. Everything for a boss lives in two clearly nam
 
 ## 1. Art and tools: `bosses/<boss_id>/`
 
-1. Copy `bosses/matris_calyx/tools/boss_env.py` and set `BOSS = "<boss_id>"`.
+1. Copy `bosses/matris_calyx/tools/boss_env.py` and set `BOSS = "<boss_id>"`. For a machine boss call `texture.use("industrial")` there (see `bosses/overhead/tools/boss_env.py`).
 2. Write the model specs (see `arms.py`). Each file starts with `import boss_env`, then uses `lib.Model`, the shared particle library `lib.P`, and `m.sfx(anim, t, "sound.name")`.
 3. Build them in Blockbench:
    - Copy `build_one.py` and `build_all.py`.

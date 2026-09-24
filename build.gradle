@@ -27,8 +27,8 @@ neoForge {
         client {
             client()
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-            // Marionette (client test driver) listens on this port when its jar is in run/mods
-            systemProperty 'marionette.port', '25585'
+            // Marionette (client test driver) listens on this port when its jar is in run/mods (-PmarionettePort=25590 for a second client)
+            systemProperty 'marionette.port', (project.findProperty('marionettePort') ?: '25585').toString()
         }
         server {
             server()

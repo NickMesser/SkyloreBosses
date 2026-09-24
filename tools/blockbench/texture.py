@@ -23,6 +23,35 @@ MATS = [  # name, base, dark, light, glow
 ]
 IDX = {m[0]: i for i, m in enumerate(MATS)}
 
+# Teknari industry (Overhead): painted steel, hazard paint, emissive lenses and grid energy.
+INDUSTRIAL = [  # name, base, dark, light, glow
+    ("steel",       (128, 134, 140), (72, 76, 84),   (182, 188, 192), False),
+    ("steel_dark",  (62, 66, 74),    (30, 32, 38),   (98, 104, 112),  False),
+    ("noven",       (46, 110, 112),  (20, 60, 64),   (90, 160, 158),  False),
+    ("plate",       (150, 146, 132), (92, 88, 78),   (196, 192, 176), False),
+    ("hazard",      (226, 180, 30),  (30, 26, 22),   (250, 214, 80),  False),
+    ("rust",        (132, 70, 40),   (70, 34, 20),   (182, 108, 60),  False),
+    ("copper",      (190, 110, 60),  (110, 56, 30),  (236, 160, 104), False),
+    ("brass",       (182, 150, 70),  (110, 86, 34),  (230, 204, 120), False),
+    ("rubber",      (36, 36, 40),    (14, 14, 16),   (64, 64, 70),    False),
+    ("grille",      (54, 58, 62),    (10, 10, 12),   (92, 96, 100),   False),
+    ("lens",        (255, 60, 40),   (150, 10, 10),  (255, 200, 150), True),
+    ("amber",       (255, 170, 40),  (170, 90, 10),  (255, 230, 150), True),
+    ("energy",      (90, 220, 255),  (20, 110, 200), (220, 250, 255), True),
+    ("concrete",    (150, 150, 146), (104, 104, 100),(180, 180, 176), False),
+    ("warning",     (176, 40, 34),   (100, 16, 14),  (220, 90, 80),   False),
+    ("glass",       (40, 46, 56),    (14, 16, 22),   (110, 130, 150), False),
+]
+_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL}
+
+
+def use(palette):
+    """Select the material palette for this process (a boss's boss_env calls this before building)."""
+    global MATS, IDX
+    MATS = _PALETTES[palette]
+    IDX = {m[0]: i for i, m in enumerate(MATS)}
+
+
 def tile_origin(name):
     i = IDX[name]
     return (i % 4) * T, (i // 4) * T
@@ -88,6 +117,37 @@ def build(seed=7):
                 col[y, x] = dark
         if name == "tooth":
             col = col * (0.85 + 0.15 * (yy[..., None] / T))
+        # industrial details
+        if name in ("steel", "steel_dark", "noven", "plate", "warning"):
+            seams = (((xx % 16) == 0) | ((yy % 16) == 0))[..., None]
+            col = np.where(seams, dark * 0.8, col)
+            rivets = ((((xx % 16) == 3) | ((xx % 16) == 13)) & (((yy % 16) == 3) | ((yy % 16) == 13)))[..., None]
+            col = np.where(rivets, light, col)
+            wear = (n > 0.82)[..., None]
+            col = np.where(wear, col * 0.5 + np.array((150, 150, 150)) * 0.5, col)
+        if name == "hazard":
+            stripes = (((xx + yy) // 8) % 2 == 0)[..., None]
+            col = np.where(stripes, base * (0.85 + 0.3 * n[..., None]), dark + 10 * n[..., None])
+        if name == "rust":
+            pits = (n > 0.7)[..., None]
+            col = np.where(pits, dark, col)
+        if name in ("copper", "brass"):
+            coil = ((yy % 4) == 0)[..., None]
+            col = np.where(coil, dark, col)
+        if name == "grille":
+            slots = ((yy % 6) < 3)[..., None] & ((xx % 32) > 2)[..., None]
+            col = np.where(slots, dark, col)
+        if name in ("lens", "amber", "energy"):
+            r = np.hypot(xx - 31.5, yy - 31.5)[..., None]
+            col = col + (light - col) * np.clip(1 - r / 34, 0, 1)
+            if name == "energy":
+                col = np.where((np.sin(yy * 0.6 + n * 8) > 0.7)[..., None], light, col)
+        if name == "concrete":
+            for _ in range(80):
+                x, y = rng.integers(0, T, 2)
+                col[y, x] = dark
+        if name == "glass":
+            col = col + (light - col) * np.clip(1 - np.abs(xx - yy)[..., None] / 6, 0, 1) * 0.5
         # pixel-art quantise
         col = (np.round(np.clip(col, 0, 255) / 8) * 8).clip(0, 255)
         ox, oy = tile_origin(name)

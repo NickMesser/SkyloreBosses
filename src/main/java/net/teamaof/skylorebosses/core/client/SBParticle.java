@@ -77,6 +77,15 @@ public class SBParticle extends TextureSheetParticle {
                 case "laser_beam" -> c(new float[]{1f, 0.95f, 0.6f}, new float[]{1f, 0.4f, 0.1f}, 0f, 5, 1.1f, -0.1f, true);
                 case "eye_glint" -> c(new float[]{1f, 0.95f, 0.7f}, new float[]{1f, 0.7f, 0.3f}, 0f, 16, 0.4f, -0.02f, true);
                 case "mucus_string" -> c(new float[]{0.85f, 0.75f, 0.7f}, new float[]{0.7f, 0.6f, 0.55f}, 0.2f, 30, 0.15f, 0, false);
+                case "smoke" -> c(new float[]{0.32f, 0.32f, 0.34f}, new float[]{0.18f, 0.18f, 0.19f}, -0.03f, 36, 0.3f, 0.008f, false);
+                case "spark" -> c(new float[]{1f, 0.85f, 0.4f}, new float[]{1f, 0.35f, 0.08f}, 0.7f, 10, 0.08f, -0.004f, true);
+                case "muzzle_flash" -> c(new float[]{1f, 0.95f, 0.7f}, new float[]{1f, 0.5f, 0.1f}, 0f, 4, 0.7f, -0.12f, true);
+                case "grid_arc" -> c(new float[]{0.6f, 0.95f, 1f}, new float[]{0.2f, 0.55f, 1f}, 0f, 6, 0.14f, -0.01f, true);
+                case "ember" -> c(new float[]{1f, 0.6f, 0.2f}, new float[]{0.8f, 0.2f, 0.05f}, -0.02f, 24, 0.1f, -0.002f, true);
+                case "shield" -> c(new float[]{0.45f, 0.8f, 1f}, new float[]{0.2f, 0.4f, 1f}, 0f, 16, 0.3f, -0.01f, true);
+                case "target_mark" -> c(new float[]{1f, 0.15f, 0.1f}, new float[]{0.9f, 0.05f, 0.05f}, 0f, 24, 0.6f, 0, true);
+                case "rail_mark" -> c(new float[]{1f, 0.7f, 0.15f}, new float[]{1f, 0.5f, 0.05f}, 0f, 24, 0.6f, 0, true);
+                case "red_beam" -> c(new float[]{1f, 0.35f, 0.25f}, new float[]{1f, 0.1f, 0.05f}, 0f, 4, 0.5f, -0.06f, true);
                 default -> c(spore, spore2, 0f, 20, 0.2f, 0, false);
             };
         }

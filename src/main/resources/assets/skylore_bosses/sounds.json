@@ -671,5 +671,309 @@
         "name": "skylore_bosses:matris_calyx/vent_strain"
       }
     ]
+  },
+  "overhead.brownout": {
+    "subtitle": "subtitles.skylore_bosses.overhead.brownout",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/brownout"
+      }
+    ]
+  },
+  "overhead.carpet.impact": {
+    "subtitle": "subtitles.skylore_bosses.overhead.carpet.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/carpet_impact",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.carpet.klaxon": {
+    "subtitle": "subtitles.skylore_bosses.overhead.carpet.klaxon",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/carpet_klaxon",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.death": {
+    "subtitle": "subtitles.skylore_bosses.overhead.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/death",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.flak.burst": {
+    "subtitle": "subtitles.skylore_bosses.overhead.flak.burst",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/flak_burst"
+      }
+    ]
+  },
+  "overhead.flak.fire": {
+    "subtitle": "subtitles.skylore_bosses.overhead.flak.fire",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/flak_fire"
+      }
+    ]
+  },
+  "overhead.flare.burst": {
+    "subtitle": "subtitles.skylore_bosses.overhead.flare.burst",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/flare_burst"
+      }
+    ]
+  },
+  "overhead.flare.launch": {
+    "subtitle": "subtitles.skylore_bosses.overhead.flare.launch",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/flare_launch"
+      }
+    ]
+  },
+  "overhead.howitzer.fire": {
+    "subtitle": "subtitles.skylore_bosses.overhead.howitzer.fire",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/howitzer_fire",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.howitzer.load": {
+    "subtitle": "subtitles.skylore_bosses.overhead.howitzer.load",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/howitzer_load",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.hurt": {
+    "subtitle": "subtitles.skylore_bosses.overhead.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/hurt"
+      }
+    ]
+  },
+  "overhead.laser.charge": {
+    "subtitle": "subtitles.skylore_bosses.overhead.laser.charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/laser_charge"
+      }
+    ]
+  },
+  "overhead.laser.loop": {
+    "subtitle": "subtitles.skylore_bosses.overhead.laser.loop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/laser_loop"
+      }
+    ]
+  },
+  "overhead.laser.vent": {
+    "subtitle": "subtitles.skylore_bosses.overhead.laser.vent",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/laser_vent"
+      }
+    ]
+  },
+  "overhead.lockdown.gate": {
+    "subtitle": "subtitles.skylore_bosses.overhead.lockdown.gate",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/lockdown_gate",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.missile.impact": {
+    "subtitle": "subtitles.skylore_bosses.overhead.missile.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/missile_impact"
+      }
+    ]
+  },
+  "overhead.missile.launch": {
+    "subtitle": "subtitles.skylore_bosses.overhead.missile.launch",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/missile_launch"
+      }
+    ]
+  },
+  "overhead.missile.lock": {
+    "subtitle": "subtitles.skylore_bosses.overhead.missile.lock",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/missile_lock"
+      }
+    ]
+  },
+  "overhead.missile.open": {
+    "subtitle": "subtitles.skylore_bosses.overhead.missile.open",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/missile_open"
+      }
+    ]
+  },
+  "overhead.overcharge.charge": {
+    "subtitle": "subtitles.skylore_bosses.overhead.overcharge.charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/overcharge_charge"
+      }
+    ]
+  },
+  "overhead.overcharge.discharge": {
+    "subtitle": "subtitles.skylore_bosses.overhead.overcharge.discharge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/overcharge_discharge"
+      }
+    ]
+  },
+  "overhead.power.charge": {
+    "subtitle": "subtitles.skylore_bosses.overhead.power.charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/power_charge",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.power.pulse": {
+    "subtitle": "subtitles.skylore_bosses.overhead.power.pulse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/power_pulse",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.pylon.break": {
+    "subtitle": "subtitles.skylore_bosses.overhead.pylon.break",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/pylon_break",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.pylon.hit": {
+    "subtitle": "subtitles.skylore_bosses.overhead.pylon.hit",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/pylon_hit",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.pylon.hum": {
+    "subtitle": "subtitles.skylore_bosses.overhead.pylon.hum",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/pylon_hum",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.pylon.online": {
+    "subtitle": "subtitles.skylore_bosses.overhead.pylon.online",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/pylon_online",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.pylon.rebuild": {
+    "subtitle": "subtitles.skylore_bosses.overhead.pylon.rebuild",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/pylon_rebuild",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.rearm.siren": {
+    "subtitle": "subtitles.skylore_bosses.overhead.rearm.siren",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/rearm_siren",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.rotor.loop": {
+    "subtitle": "subtitles.skylore_bosses.overhead.rotor.loop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/rotor_loop"
+      }
+    ]
+  },
+  "overhead.shell.impact": {
+    "subtitle": "subtitles.skylore_bosses.overhead.shell.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/shell_impact",
+        "attenuation_distance": 96
+      }
+    ]
+  },
+  "overhead.shield.deflect": {
+    "subtitle": "subtitles.skylore_bosses.overhead.shield.deflect",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/shield_deflect"
+      }
+    ]
+  },
+  "overhead.shield.pulse": {
+    "subtitle": "subtitles.skylore_bosses.overhead.shield.pulse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/shield_pulse"
+      }
+    ]
+  },
+  "overhead.strafe.fire": {
+    "subtitle": "subtitles.skylore_bosses.overhead.strafe.fire",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/strafe_fire"
+      }
+    ]
+  },
+  "overhead.strafe.spinup": {
+    "subtitle": "subtitles.skylore_bosses.overhead.strafe.spinup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/strafe_spinup"
+      }
+    ]
+  },
+  "overhead.victory": {
+    "subtitle": "subtitles.skylore_bosses.overhead.victory",
+    "sounds": [
+      {
+        "name": "skylore_bosses:overhead/victory",
+        "attenuation_distance": 96
+      }
+    ]
   }
 }

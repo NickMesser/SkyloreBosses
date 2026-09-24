@@ -36,7 +36,7 @@ public final class SkyloreBosses {
             LOG.info("Loaded boss module {}", m.id());
         }
         if (Platform.getEnvironment() == Env.CLIENT) {
-            net.teamaof.skylorebosses.core.client.SBClient.init();
+            net.teamaof.skylorebosses.core.client.SBClient.init(modBus);
             for (BossModule m : BossModules.all()) m.clientInit();
         }
     }

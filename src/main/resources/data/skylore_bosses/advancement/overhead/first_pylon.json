@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:generator_pylon"
+    },
+    "title": {
+      "translate": "advancements.overhead.first_pylon.title"
+    },
+    "description": {
+      "translate": "advancements.overhead.first_pylon.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:overhead/enter_yard"
+}

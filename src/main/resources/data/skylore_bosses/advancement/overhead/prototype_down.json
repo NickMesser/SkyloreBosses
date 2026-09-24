@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:targeting_core"
+    },
+    "title": {
+      "translate": "advancements.overhead.prototype_down.title"
+    },
+    "description": {
+      "translate": "advancements.overhead.prototype_down.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    },
+    "kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "skylore_bosses:overhead"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "code",
+      "kill"
+    ]
+  ],
+  "parent": "skylore_bosses:overhead/first_pylon"
+}

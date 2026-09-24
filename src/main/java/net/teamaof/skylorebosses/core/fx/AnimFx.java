@@ -105,6 +105,12 @@ public final class AnimFx {
                 case "laser_beam" -> new Profile(20, 0.4, 0.3, 0.0);
                 case "eye_glint" -> new Profile(4, 0.3, 0.01, 0.0);
                 case "mucus_string" -> new Profile(6, 0.6, 0.02, -0.03);
+                case "smoke" -> new Profile(10, 0.8, 0.08, 0.08);
+                case "spark" -> new Profile(16, 0.3, 0.5, 0.15);
+                case "muzzle_flash" -> new Profile(6, 0.2, 0.05, 0.0);
+                case "grid_arc" -> new Profile(12, 0.8, 0.4, 0.0);
+                case "ember" -> new Profile(6, 0.4, 0.08, 0.05);
+                case "shield" -> new Profile(60, 3.0, 0.6, 0.0);
                 default -> new Profile(6, 0.5, 0.1, 0.0);
             };
         }
