@@ -3,9 +3,9 @@
     python tools/mar.py cmd "skylorecalyx status"
     python tools/mar.py shot name
     python tools/mar.py POST /world/create '{"type":"void"}'"""
-import json, sys, time, urllib.request
+import json, os, sys, time, urllib.request
 
-BASE = "http://127.0.0.1:25585"
+BASE = "http://127.0.0.1:" + os.environ.get("MARIONETTE_PORT", "25585")
 
 
 def call(method, path, body=None, timeout=300):

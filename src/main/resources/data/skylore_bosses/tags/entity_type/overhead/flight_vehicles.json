@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "immersive_aircraft:airship",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:biplane",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:gyrodyne",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:quadrocopter",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:cargo_airship",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:warship",
+      "required": false
+    },
+    {
+      "id": "immersive_aircraft:bamboo_hopper",
+      "required": false
+    }
+  ]
+}

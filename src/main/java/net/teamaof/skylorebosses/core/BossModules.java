@@ -3,11 +3,13 @@ package net.teamaof.skylorebosses.core;
 import java.util.List;
 import java.util.Optional;
 import net.teamaof.skylorebosses.bosses.matriscalyx.MatrisCalyxBoss;
+import net.teamaof.skylorebosses.bosses.overhead.OverheadBoss;
 
 /** The list of bosses in the mod. Adding a boss = one line here. */
 public final class BossModules {
     private static final List<BossModule> ALL = List.of(
-            new MatrisCalyxBoss()
+            new MatrisCalyxBoss(),
+            new OverheadBoss()
     );
 
     private BossModules() {}

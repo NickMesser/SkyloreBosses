@@ -15,6 +15,7 @@ The boss encounters of the Skylore modpack, as one NeoForge mod. This repository
 | Boss | Boss folder (design, models, tools) | Java module |
 |---|---|---|
 | **Matris Calyx**, the Parasite Mother (Act V finale) | [bosses/matris_calyx](bosses/matris_calyx/README.md) | `bosses/matriscalyx/` |
+| **Overhead**, Noven's Decommissioned Prototype (Act II) | [bosses/overhead](bosses/overhead/README.md) | `bosses/overhead/` |
 
 ## Repository layout
 
@@ -62,12 +63,14 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
 ```
 
 - Use a JDK 21 on `JAVA_HOME` or `PATH`. Do not commit a machine-local `org.gradle.java.home`.
+- A second dev client can run beside another one: `./gradlew runClient -PmarionettePort=25590`, then set `MARIONETTE_PORT=25590` for the test scripts. Set `pauseOnLostFocus:false` in `run/options.txt` so a background window keeps ticking.
 - **In-game tests:** put the Marionette jar in `run/mods/`, then run `tools/testing/restart.py` followed by one of the `t_*.py` scripts:
   - `t_gate.py`: window gating
   - `t_flow.py`: phase flow
   - `t_laser.py`: laser and victory
   - `t_arms.py`: per-arm attacks
   - `t_proto.py`: Proto-World entry
+  - `t_overhead.py`: Overhead end to end (phases, gate, pylons, re-arm, persistence, every attack, victory)
 
 ## Commands (op level 2)
 
@@ -82,9 +85,15 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
   - `attack <kind>`
   - `infection <players> <value>`
 
+- `/skylorebosses overhead ...`. For Overhead, `/skyloreoverhead` is a shortcut:
+  - `build [pos]`, `register [pos]`, `unregister`
+  - `start`, `reset`, `skipphase`, `status`, `tp`
+  - `breakpylon <0..3>`, `setpylons <0..4>`, `attack <id>`
+
 ## For the pack
 
 - **Any boss:** listen to `BossEvents.DEFEATED` (level, bossId, origin, participants) to grant stages, e.g. `calyx_purged` for `matris_calyx`.
 - **Matris details:** `MatrisEvents`, the advancement `skylore_bosses:matris_calyx/bloom_slain`, or `victoryFunction` in the `[matris_calyx]` section of `skylore_bosses-server.toml`.
 - **Proto-World:** the Tempad target is `skylore_bosses:proto_world`.
-- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`.
+- **Overhead details:** `OverheadEvents` (including `START_CHECK` to gate the fight, e.g. on the Mek steel stage), the advancement `skylore_bosses:overhead/prototype_down`, or `victoryFunction` in the `[overhead]` section. Grant `teknari_prototype_down` from `BossEvents.DEFEATED` with boss id `overhead`. See [bosses/overhead/DESIGN.md](bosses/overhead/DESIGN.md) §12.
+- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`, `#skylore_bosses:overhead/breakable_cover`, `#skylore_bosses:overhead/flight_vehicles`.

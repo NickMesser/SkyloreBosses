@@ -251,8 +251,74 @@ def ambient(r, d=8.0):
     return x
 
 
+# ---------------- industrial recipes (Overhead) ----------------
+def servo(r, d=1.0, f0=220, f1=880):
+    """rising electric whine with gear chatter"""
+    n = int(SR * d)
+    x = sweep(f0, f1, d, "saw", curve=0.8) * 0.4 + sweep(f0 * 2.01, f1 * 2.01, d, curve=0.8) * 0.2
+    x += clicks(r, d, count=int(d * 30), lo=800, hi=4000) * 0.5
+    return band(x, 100, 7000) * env_adsr(n, 0.05, d * 0.2)
+
+
+def hum(r, d=2.0, f=60):
+    tt = t_(d)
+    x = sum(np.sin(2 * np.pi * f * k * tt) / k for k in (1, 2, 3, 5))
+    x += band(r.standard_normal(len(tt)), 2000, 6000) * 0.08
+    return x * (1 + 0.2 * np.sin(2 * np.pi * 3 * tt))
+
+
+def klaxon(r, d=2.0):
+    tt = t_(d)
+    f = np.where((tt * 2.5) % 1 < 0.5, 440, 330)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    x = np.tanh(3 * np.sin(ph)) * 0.8
+    return reverb(x * env_adsr(len(tt), 0.02, 0.1), 0.8, 0.3, r)
+
+
+def siren(r, d=3.0):
+    tt = t_(d)
+    f = 400 + 250 * np.sin(2 * np.pi * 0.6 * tt)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    return reverb(np.tanh(2 * np.sin(ph)) * env_adsr(len(tt), 0.2, 0.4), 1.0, 0.3, r)
+
+
+def autocannon(r, d=0.25):
+    n = int(SR * d)
+    x = band(r.standard_normal(n), 200, 5000) * env_exp(n, 0.03)
+    x += sweep(180, 60, d) * env_exp(n, 0.04) * 0.8
+    return np.tanh(x * 2)
+
+
+def beep(r, d=0.5, f=1760, count=3):
+    out = np.zeros(int(SR * d))
+    step = len(out) // count
+    for k in range(count):
+        s = k * step
+        b = np.sin(2 * np.pi * f * t_(step * 0.5 / SR)) * 0.6
+        out[s:s + len(b)] += b
+    return out
+
+
+def clank(r, d=0.6):
+    n = int(SR * d)
+    x = sum(np.sin(2 * np.pi * f * t_(d)) * a for f, a in ((310, 1), (523, 0.6), (1187, 0.4), (2300, 0.2)))
+    x = x * env_exp(n, 0.12) + band(r.standard_normal(n), 500, 6000) * env_exp(n, 0.02)
+    return reverb(x, 0.6, 0.25, r)
+
+
+def electric(r, d=1.0):
+    return zap(r, d) * 0.8 + hum(r, d, 120) * 0.3
+
+
+# Checked before the organic rules; a boss's export script sets it (e.g. Overhead's industrial list).
+EXTRA_RULES = []
+
+
 def pick(name):
     """Map a sound id (without namespace) to (recipe, kwargs, pitch_scale)."""
+    for key, fn, kw, *ps in EXTRA_RULES:
+        if key in name:
+            return fn, kw, (ps[0] if ps else 1.0)
     big = "bloom" in name or "slam" in name
     small = name.startswith("mite") or name.startswith("thrall") or name.startswith("drifter") or name.startswith("bile")
     rules = [

@@ -2,10 +2,11 @@ package net.teamaof.skylorebosses.core.client;
 
 import dev.architectury.event.events.client.ClientGuiEvent;
 import dev.architectury.event.events.client.ClientTickEvent;
-import dev.architectury.registry.client.particle.ParticleProviderRegistry;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.teamaof.skylorebosses.core.net.SBNetwork.ClientFxState;
@@ -15,10 +16,14 @@ import net.teamaof.skylorebosses.core.registry.SBParticles;
 public final class SBClient {
     private SBClient() {}
 
-    public static void init() {
-        for (String name : SBParticles.NAMES) {
-            ParticleProviderRegistry.register(SBParticles.BY_NAME.get(name), sprites -> new SBParticle.Provider(sprites, SBParticle.Style.of(name)));
-        }
+    public static void init(IEventBus modBus) {
+        // Registered straight on NeoForge's event: Architectury's deferred particle registry never delivered these
+        // providers, which left every skylore_bosses particle invisible.
+        modBus.addListener((RegisterParticleProvidersEvent e) -> {
+            for (String name : SBParticles.NAMES) {
+                e.registerSpriteSet(SBParticles.BY_NAME.get(name).get(), sprites -> new SBParticle.Provider(sprites, SBParticle.Style.of(name)));
+            }
+        });
         ClientTickEvent.CLIENT_POST.register(mc -> ClientFxState.tick());
         ClientGuiEvent.RENDER_HUD.register(SBClient::renderOverlay);
         NeoForge.EVENT_BUS.addListener((ViewportEvent.ComputeCameraAngles e) -> {
