@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "skylore_bosses:block/static_deacon/altar_plinth_top",
+    "bottom": "skylore_bosses:block/static_deacon/altar_plinth_top",
+    "side": "skylore_bosses:block/static_deacon/altar_plinth_side"
+  }
+}

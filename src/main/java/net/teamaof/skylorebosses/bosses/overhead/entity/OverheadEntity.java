@@ -46,6 +46,7 @@ import net.teamaof.skylorebosses.bosses.overhead.encounter.PylonState;
 import net.teamaof.skylorebosses.bosses.overhead.encounter.Yard;
 import net.teamaof.skylorebosses.bosses.overhead.encounter.YardLayout;
 import net.teamaof.skylorebosses.core.fx.AnimFx;
+import net.teamaof.skylorebosses.core.fx.Telegraph;
 import net.teamaof.skylorebosses.core.registry.SBParticles;
 import net.teamaof.skylorebosses.core.registry.SBSounds;
 import org.joml.Vector3f;

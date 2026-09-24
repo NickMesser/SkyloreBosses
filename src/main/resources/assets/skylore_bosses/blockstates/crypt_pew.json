@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "skylore_bosses:block/crypt_pew"
+    },
+    "facing=east": {
+      "model": "skylore_bosses:block/crypt_pew",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "skylore_bosses:block/crypt_pew",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skylore_bosses:block/crypt_pew",
+      "y": 270
+    }
+  }
+}

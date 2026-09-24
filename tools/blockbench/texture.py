@@ -42,14 +42,37 @@ INDUSTRIAL = [  # name, base, dark, light, glow
     ("warning",     (176, 40, 34),   (100, 16, 14),  (220, 90, 80),   False),
     ("glass",       (40, 46, 56),    (14, 16, 22),   (110, 130, 150), False),
 ]
-_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL}
+# Church of Ender (The Static Deacon): Beryl crystal, vestments, endstone, static. Usually overridden tile by tile with
+# painted swatches (see OVERRIDE_DIR); these colours are the procedural fallback.
+LITURGICAL = [  # name, base, dark, light, glow
+    ("beryl",       (150, 220, 200), (80, 150, 140),  (220, 250, 240), False),
+    ("beryl_dark",  (40, 110, 105),  (15, 55, 55),    (90, 170, 160),  False),
+    ("alb",         (225, 220, 205), (170, 165, 150), (245, 242, 232), False),
+    ("dalmatic",    (80, 36, 110),   (40, 16, 60),    (130, 70, 170),  False),
+    ("trim",        (210, 170, 70),  (130, 95, 30),   (250, 220, 130), False),
+    ("stole",       (230, 220, 160), (170, 150, 100), (250, 245, 200), False),
+    ("static",      (130, 130, 140), (60, 60, 70),    (200, 200, 210), False),
+    ("glyph_glow",  (190, 90, 255),  (90, 20, 140),   (240, 180, 255), True),
+    ("core_glow",   (200, 250, 255), (90, 200, 230),  (255, 255, 255), True),
+    ("chain",       (60, 60, 66),    (20, 20, 24),    (110, 110, 118), False),
+    ("brass",       (180, 140, 70),  (110, 80, 35),   (230, 200, 120), False),
+    ("endstone",    (225, 222, 160), (170, 165, 110), (245, 242, 200), False),
+    ("obsidian",    (30, 20, 40),    (10, 5, 15),     (70, 50, 90),    False),
+    ("shadow",      (20, 10, 28),    (5, 0, 8),       (45, 25, 60),    False),
+    ("halo",        (240, 220, 140), (170, 140, 60),  (255, 250, 210), True),
+    ("ender_flame", (170, 80, 230),  (80, 20, 120),   (230, 170, 255), True),
+]
+_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL, "liturgical": LITURGICAL}
+# Optional folder of hand-painted or generated <material>.png swatches; a matching file replaces that procedural tile.
+OVERRIDE_DIR = None
 
 
-def use(palette):
+def use(palette, override_dir=None):
     """Select the material palette for this process (a boss's boss_env calls this before building)."""
-    global MATS, IDX
+    global MATS, IDX, OVERRIDE_DIR
     MATS = _PALETTES[palette]
     IDX = {m[0]: i for i, m in enumerate(MATS)}
+    OVERRIDE_DIR = override_dir
 
 
 def tile_origin(name):
@@ -150,6 +173,11 @@ def build(seed=7):
             col = col + (light - col) * np.clip(1 - np.abs(xx - yy)[..., None] / 6, 0, 1) * 0.5
         # pixel-art quantise
         col = (np.round(np.clip(col, 0, 255) / 8) * 8).clip(0, 255)
+        if OVERRIDE_DIR:
+            import os
+            f = os.path.join(OVERRIDE_DIR, f"{name}.png")
+            if os.path.exists(f):
+                col = np.array(Image.open(f).convert("RGB").resize((T, T), Image.BOX)).astype(float)
         ox, oy = tile_origin(name)
         img[oy:oy + T, ox:ox + T, :3] = col; img[oy:oy + T, ox:ox + T, 3] = 255
         if is_glow:

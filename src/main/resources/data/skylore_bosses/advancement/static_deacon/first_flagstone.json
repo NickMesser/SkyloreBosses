@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:desecrated_endstone"
+    },
+    "title": {
+      "translate": "advancements.static_deacon.first_flagstone.title"
+    },
+    "description": {
+      "translate": "advancements.static_deacon.first_flagstone.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:static_deacon/enter_crypt"
+}

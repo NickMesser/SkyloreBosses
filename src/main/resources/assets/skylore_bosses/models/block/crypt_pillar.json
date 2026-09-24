@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "skylore_bosses:block/static_deacon/crypt_pillar_top",
+    "side": "skylore_bosses:block/static_deacon/crypt_pillar_side"
+  }
+}

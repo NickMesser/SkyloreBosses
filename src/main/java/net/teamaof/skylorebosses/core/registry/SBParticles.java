@@ -15,12 +15,15 @@ public final class SBParticles {
     public static final String[] NAMES = {"bile_drip", "bile_splash", "spore_puff", "spore_haze", "nerve_spark", "nerve_pulse",
             "core_glow", "blood_burst", "flesh_chunks", "root_dust", "laser_charge", "laser_beam", "eye_glint", "mucus_string",
             // industrial set (Overhead)
-            "smoke", "spark", "muzzle_flash", "grid_arc", "ember", "shield", "target_mark", "rail_mark", "red_beam"};
+            "smoke", "spark", "muzzle_flash", "grid_arc", "ember", "shield", "target_mark", "rail_mark", "red_beam",
+            // liturgical set (The Static Deacon)
+            "static_dust", "communion_mote", "beryl_glint", "litany_light"};
 
     static {
         for (String n : NAMES) {
             boolean alwaysShow = n.equals("laser_beam") || n.equals("laser_charge") || n.endsWith("_mark") || n.equals("red_beam")
-                    || n.equals("grid_arc");
+                    || n.equals("grid_arc")
+                    || n.equals("communion_mote") || n.equals("litany_light");
             BY_NAME.put(n, SBRegistries.PARTICLE_TYPES.register(n, () -> new SimpleParticleType(alwaysShow)));
         }
     }

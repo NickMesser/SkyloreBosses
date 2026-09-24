@@ -20,6 +20,7 @@ import net.minecraft.world.phys.Vec3;
 import net.teamaof.skylorebosses.bosses.overhead.OverheadConfig;
 import net.teamaof.skylorebosses.bosses.overhead.registry.OverheadEntities;
 import net.teamaof.skylorebosses.core.fx.AnimFx;
+import net.teamaof.skylorebosses.core.fx.Telegraph;
 import net.teamaof.skylorebosses.core.registry.SBParticles;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;

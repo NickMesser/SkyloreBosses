@@ -310,6 +310,48 @@ def electric(r, d=1.0):
     return zap(r, d) * 0.8 + hum(r, d, 120) * 0.3
 
 
+# ---------------- liturgical recipes (The Static Deacon) ----------------
+def bell(r, d=3.0, f=220):
+    """church bell: inharmonic partials (hum, prime, tierce, quint, nominal...) with long decays"""
+    tt = t_(d)
+    n = len(tt)
+    x = np.zeros(n)
+    for ratio, amp, dec in ((0.5, 0.6, 1.0), (1.0, 1.0, 0.8), (1.183, 0.5, 0.6), (1.506, 0.4, 0.5), (2.0, 0.55, 0.45),
+                            (2.514, 0.25, 0.3), (2.662, 0.2, 0.28), (3.011, 0.15, 0.2), (4.166, 0.1, 0.15)):
+        x += amp * np.sin(2 * np.pi * f * ratio * tt + r.uniform(0, 6.28)) * env_exp(n, d * dec)
+    x[: int(SR * 0.004)] *= np.linspace(0, 1, int(SR * 0.004))
+    return reverb(x, 1.6, 0.35, r)
+
+
+def crystal(r, d=0.8, f=1800):
+    """glassy chime/shatter: detuned high partials plus a short bright noise burst"""
+    tt = t_(d)
+    n = len(tt)
+    x = sum(np.sin(2 * np.pi * f * k * (1 + r.uniform(-0.01, 0.01)) * tt) / k for k in (1, 1.5, 2.3, 3.1))
+    x = x * env_exp(n, d * 0.35) + band(r.standard_normal(n), 3000, 10000) * env_exp(n, 0.02) * 0.6
+    return reverb(x, 0.8, 0.3, r)
+
+
+def crackle(r, d=1.0, density=60):
+    """static discharge: sparse broadband clicks over a hiss bed"""
+    n = int(SR * d)
+    x = band(r.standard_normal(n), 1500, 9000) * 0.25
+    for _ in range(int(density * d)):
+        s = r.integers(0, n - 200)
+        x[s:s + 200] += r.standard_normal(200) * env_exp(200, 0.002) * r.uniform(0.5, 1.5)
+    return x * env_adsr(n, 0.05, d * 0.3)
+
+
+def chant(r, d=3.0, f=98):
+    """low sung drone: saw voices through vowel formants, slow vibrato"""
+    tt = t_(d)
+    vib = 1 + 0.004 * np.sin(2 * np.pi * 5 * tt)
+    ph = 2 * np.pi * np.cumsum(f * vib) / SR
+    src = sum(np.sin(ph * k) / k for k in range(1, 18))
+    x = sum(band(src, fc * 0.85, fc * 1.15) * g for fc, g in ((500, 1.0), (900, 0.6), (2400, 0.25)))
+    return reverb(x * env_adsr(len(tt), d * 0.25, d * 0.35), 1.8, 0.45, r)
+
+
 # Checked before the organic rules; a boss's export script sets it (e.g. Overhead's industrial list).
 EXTRA_RULES = []
 

@@ -975,5 +975,304 @@
         "attenuation_distance": 96
       }
     ]
+  },
+  "static_deacon.absorb": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.absorb",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/absorb"
+      }
+    ]
+  },
+  "static_deacon.beam.loop": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.beam.loop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/beam_loop"
+      }
+    ]
+  },
+  "static_deacon.beam.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.beam.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/beam_windup"
+      }
+    ]
+  },
+  "static_deacon.bell": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.bell",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/bell"
+      }
+    ]
+  },
+  "static_deacon.bolt.cast": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.bolt.cast",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/bolt_cast"
+      }
+    ]
+  },
+  "static_deacon.bolt.impact": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.bolt.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/bolt_impact"
+      }
+    ]
+  },
+  "static_deacon.bolt.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.bolt.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/bolt_windup"
+      }
+    ]
+  },
+  "static_deacon.chime": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.chime",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/chime",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.chime.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.chime.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/chime_windup",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.death": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/death",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.flagstone.desecrate": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.flagstone.desecrate",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/flagstone_desecrate"
+      }
+    ]
+  },
+  "static_deacon.flagstone.live": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.flagstone.live",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/flagstone_live"
+      }
+    ]
+  },
+  "static_deacon.flagstone.reseed": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.flagstone.reseed",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/flagstone_reseed"
+      }
+    ]
+  },
+  "static_deacon.hurt": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/hurt"
+      }
+    ]
+  },
+  "static_deacon.idle.hum": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.idle.hum",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/idle_hum"
+      }
+    ]
+  },
+  "static_deacon.lash.swing": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.lash.swing",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/lash_swing"
+      }
+    ]
+  },
+  "static_deacon.lash.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.lash.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/lash_windup"
+      }
+    ]
+  },
+  "static_deacon.lockdown": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.lockdown",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/lockdown",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.pull.snap": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.pull.snap",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/pull_snap"
+      }
+    ]
+  },
+  "static_deacon.pull.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.pull.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/pull_windup"
+      }
+    ]
+  },
+  "static_deacon.pull.yank": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.pull.yank",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/pull_yank"
+      }
+    ]
+  },
+  "static_deacon.pulse.charge": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.pulse.charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/pulse_charge"
+      }
+    ]
+  },
+  "static_deacon.pulse.release": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.pulse.release",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/pulse_release"
+      }
+    ]
+  },
+  "static_deacon.reseed.begin": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.reseed.begin",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/reseed_begin",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.reseed.chant": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.reseed.chant",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/reseed_chant",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.reseed.toll": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.reseed.toll",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/reseed_toll",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.shard.break": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.shard.break",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/shard_break"
+      }
+    ]
+  },
+  "static_deacon.shard.cast": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.shard.cast",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/shard_cast"
+      }
+    ]
+  },
+  "static_deacon.shard.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.shard.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/shard_windup"
+      }
+    ]
+  },
+  "static_deacon.shatter.crack": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.shatter.crack",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/shatter_crack"
+      }
+    ]
+  },
+  "static_deacon.shatter.windup": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.shatter.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/shatter_windup"
+      }
+    ]
+  },
+  "static_deacon.step": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.step",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/step"
+      }
+    ]
+  },
+  "static_deacon.vesting.rise": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.vesting.rise",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/vesting_rise",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.victory": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.victory",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/victory",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.vigil.begin": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.vigil.begin",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/vigil_begin",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "static_deacon.vigil.break": {
+    "subtitle": "subtitles.skylore_bosses.static_deacon.vigil.break",
+    "sounds": [
+      {
+        "name": "skylore_bosses:static_deacon/vigil_break",
+        "attenuation_distance": 64
+      }
+    ]
   }
 }

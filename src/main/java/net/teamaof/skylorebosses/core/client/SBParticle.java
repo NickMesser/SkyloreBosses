@@ -86,6 +86,10 @@ public class SBParticle extends TextureSheetParticle {
                 case "target_mark" -> c(new float[]{1f, 0.15f, 0.1f}, new float[]{0.9f, 0.05f, 0.05f}, 0f, 24, 0.6f, 0, true);
                 case "rail_mark" -> c(new float[]{1f, 0.7f, 0.15f}, new float[]{1f, 0.5f, 0.05f}, 0f, 24, 0.6f, 0, true);
                 case "red_beam" -> c(new float[]{1f, 0.35f, 0.25f}, new float[]{1f, 0.1f, 0.05f}, 0f, 4, 0.5f, -0.06f, true);
+                case "static_dust" -> c(new float[]{0.78f, 0.78f, 0.82f}, new float[]{0.35f, 0.35f, 0.4f}, 0.02f, 30, 0.12f, -0.002f, false);
+                case "communion_mote" -> c(new float[]{0.85f, 0.6f, 1f}, new float[]{1f, 0.9f, 0.55f}, -0.02f, 30, 0.14f, -0.003f, true);
+                case "beryl_glint" -> c(new float[]{0.7f, 1f, 0.9f}, new float[]{0.3f, 0.85f, 0.7f}, 0f, 12, 0.12f, -0.008f, true);
+                case "litany_light" -> c(new float[]{1f, 0.95f, 0.85f}, new float[]{0.75f, 0.55f, 1f}, 0f, 10, 0.2f, -0.015f, true);
                 default -> c(spore, spore2, 0f, 20, 0.2f, 0, false);
             };
         }

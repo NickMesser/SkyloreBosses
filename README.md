@@ -16,6 +16,7 @@ The boss encounters of the Skylore modpack, as one NeoForge mod. This repository
 |---|---|---|
 | **Matris Calyx**, the Parasite Mother (Act V finale) | [bosses/matris_calyx](bosses/matris_calyx/README.md) | `bosses/matriscalyx/` |
 | **Overhead**, Noven's Decommissioned Prototype (Act II) | [bosses/overhead](bosses/overhead/README.md) | `bosses/overhead/` |
+| **The Static Deacon**, caretaker of the Church of Ender undercroft (Act III) | [bosses/static_deacon](bosses/static_deacon/README.md) | `bosses/staticdeacon/` |
 
 ## Repository layout
 
@@ -71,6 +72,7 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
   - `t_arms.py`: per-arm attacks
   - `t_proto.py`: Proto-World entry
   - `t_overhead.py`: Overhead end to end (phases, gate, pylons, re-arm, persistence, every attack, victory)
+  - `t_static_deacon.py`: Static Deacon end to end (floor verbs, heal gate, stance, vigil, reseed rite, persistence, every attack, victory)
 
 ## Commands (op level 2)
 
@@ -90,10 +92,16 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
   - `start`, `reset`, `skipphase`, `status`, `tp`
   - `breakpylon <0..3>`, `setpylons <0..4>`, `attack <id>`
 
+- `/skylorebosses static_deacon ...`. For the Deacon, `/skyloredeacon` is a shortcut:
+  - `build [pos]`, `register [pos]`, `unregister`
+  - `start`, `reset`, `skipphase`, `status`, `tp`
+  - `setfloor <n>`, `strip`, `breakplinthlock`, `reseed`, `attack <id>`
+
 ## For the pack
 
 - **Any boss:** listen to `BossEvents.DEFEATED` (level, bossId, origin, participants) to grant stages, e.g. `calyx_purged` for `matris_calyx`.
 - **Matris details:** `MatrisEvents`, the advancement `skylore_bosses:matris_calyx/bloom_slain`, or `victoryFunction` in the `[matris_calyx]` section of `skylore_bosses-server.toml`.
 - **Proto-World:** the Tempad target is `skylore_bosses:proto_world`.
 - **Overhead details:** `OverheadEvents` (including `START_CHECK` to gate the fight, e.g. on the Mek steel stage), the advancement `skylore_bosses:overhead/prototype_down`, or `victoryFunction` in the `[overhead]` section. Grant `teknari_prototype_down` from `BossEvents.DEFEATED` with boss id `overhead`. See [bosses/overhead/DESIGN.md](bosses/overhead/DESIGN.md) §12.
-- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`, `#skylore_bosses:overhead/breakable_cover`, `#skylore_bosses:overhead/flight_vehicles`.
+- **Static Deacon details:** `DeaconEvents` (`START_CHECK` for the `church_of_ender` gate, `FLAGSTONE_DESECRATED`, `VIGIL_BROKEN`, `RESEED_STARTED`, `VICTORY`), the advancement `skylore_bosses:static_deacon/deacon_silenced`, or `victoryFunction` in the `[static_deacon]` section. Grant `static_deacon_cleared` from `BossEvents.DEFEATED` with boss id `static_deacon`. See [bosses/static_deacon/DESIGN.md](bosses/static_deacon/DESIGN.md) §12.
+- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`, `#skylore_bosses:overhead/breakable_cover`, `#skylore_bosses:overhead/flight_vehicles`, `#skylore_bosses:static_deacon/communion_substrate`, `#skylore_bosses:static_deacon/breakable_cover`.

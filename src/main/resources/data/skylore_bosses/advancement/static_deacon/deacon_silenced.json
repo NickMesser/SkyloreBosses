@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:static_thurible"
+    },
+    "title": {
+      "translate": "advancements.static_deacon.deacon_silenced.title"
+    },
+    "description": {
+      "translate": "advancements.static_deacon.deacon_silenced.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    },
+    "kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "skylore_bosses:static_deacon"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "code",
+      "kill"
+    ]
+  ],
+  "parent": "skylore_bosses:static_deacon/vigil_broken"
+}

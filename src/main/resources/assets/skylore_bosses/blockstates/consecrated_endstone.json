@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "skylore_bosses:block/consecrated_endstone"
+    },
+    "lit=false": {
+      "model": "skylore_bosses:block/consecrated_endstone_unlit"
+    }
+  }
+}

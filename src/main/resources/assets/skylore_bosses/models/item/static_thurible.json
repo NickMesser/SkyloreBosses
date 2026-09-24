@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "skylore_bosses:item/static_deacon/static_thurible"
+  }
+}

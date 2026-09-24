@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:crypt_pew"
+    },
+    "title": {
+      "translate": "advancements.static_deacon.no_reseed.title"
+    },
+    "description": {
+      "translate": "advancements.static_deacon.no_reseed.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:static_deacon/deacon_silenced"
+}

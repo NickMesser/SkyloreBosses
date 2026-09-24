@@ -1,0 +1,31 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.homing_shard.fly": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "shard": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              360
+            ]
+          }
+        }
+      },
+      "particle_effects": {
+        "0.0": {
+          "effect": "static_dust",
+          "locator": "trail"
+        }
+      }
+    }
+  }
+}

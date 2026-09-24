@@ -111,6 +111,10 @@ public final class AnimFx {
                 case "grid_arc" -> new Profile(12, 0.8, 0.4, 0.0);
                 case "ember" -> new Profile(6, 0.4, 0.08, 0.05);
                 case "shield" -> new Profile(60, 3.0, 0.6, 0.0);
+                case "static_dust" -> new Profile(14, 0.9, 0.06, -0.02);
+                case "communion_mote" -> new Profile(10, 0.8, 0.04, 0.06);
+                case "beryl_glint" -> new Profile(10, 0.4, 0.3, 0.02);
+                case "litany_light" -> new Profile(12, 0.5, 0.05, 0.02);
                 default -> new Profile(6, 0.5, 0.1, 0.0);
             };
         }

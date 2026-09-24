@@ -1,4 +1,4 @@
-package net.teamaof.skylorebosses.bosses.overhead.entity;
+package net.teamaof.skylorebosses.core.fx;
 
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -6,8 +6,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Ground and air telegraph drawing. Uses the long-range particle path so a marker 60 blocks away across the
- * yard still shows (vanilla culls normal server particles at 32 blocks).
+ * Ground and air telegraph drawing for any boss. Uses the long-range particle path so a marker 60 blocks away across the
+ * arena still shows (vanilla culls normal server particles at 32 blocks).
  */
 public final class Telegraph {
     private Telegraph() {}
