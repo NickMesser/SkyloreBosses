@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:routing_gate"
+    },
+    "title": {
+      "translate": "advancements.null_router.misrouted.title"
+    },
+    "description": {
+      "translate": "advancements.null_router.misrouted.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:null_router/first_ack"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "skylore_bosses:block/null_router/vault_pillar_top",
+    "side": "skylore_bosses:block/null_router/vault_pillar_side"
+  }
+}

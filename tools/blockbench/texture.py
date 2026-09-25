@@ -62,7 +62,27 @@ LITURGICAL = [  # name, base, dark, light, glow
     ("halo",        (240, 220, 140), (170, 140, 60),  (255, 250, 210), True),
     ("ender_flame", (170, 80, 230),  (80, 20, 120),   (230, 170, 255), True),
 ]
-_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL, "liturgical": LITURGICAL}
+# Automaton network (Null Router): router chassis steel, clean-room ceramic, AE2-style fluix, data cable, status LEDs.
+# Usually overridden tile by tile with Codex swatches; these colours are the procedural fallback.
+AUTOMATON = [  # name, base, dark, light, glow
+    ("chassis",      (70, 74, 82),    (36, 38, 44),    (118, 124, 134), False),
+    ("chassis_dark", (30, 32, 36),    (12, 12, 14),    (58, 60, 66),    False),
+    ("panel",        (206, 210, 214), (150, 154, 160), (236, 238, 240), False),
+    ("fluix",        (150, 90, 230),  (70, 30, 140),   (200, 170, 255), True),
+    ("cable",        (40, 38, 50),    (16, 14, 22),    (90, 80, 120),   False),
+    ("cable_glow",   (60, 220, 240),  (20, 110, 150),  (200, 250, 255), True),
+    ("lens",         (200, 250, 255), (80, 200, 230),  (255, 255, 255), True),
+    ("led_amber",    (255, 170, 40),  (140, 70, 10),   (255, 230, 150), True),
+    ("led_red",      (255, 50, 40),   (130, 10, 10),   (255, 170, 150), True),
+    ("led_green",    (80, 240, 110),  (20, 120, 40),   (190, 255, 200), True),
+    ("screen",       (20, 34, 30),    (6, 12, 10),     (50, 110, 80),   False),
+    ("fins",         (160, 166, 172), (100, 104, 110), (210, 214, 218), False),
+    ("copper",       (190, 110, 60),  (110, 56, 30),   (236, 160, 104), False),
+    ("hazard",       (226, 180, 30),  (30, 26, 22),    (250, 214, 80),  False),
+    ("rubber",       (30, 30, 34),    (10, 10, 12),    (56, 56, 62),    False),
+    ("packet",       (255, 150, 40),  (180, 80, 10),   (255, 220, 140), True),
+]
+_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL, "liturgical": LITURGICAL, "automaton": AUTOMATON}
 # Optional folder of hand-painted or generated <material>.png swatches; a matching file replaces that procedural tile.
 OVERRIDE_DIR = None
 

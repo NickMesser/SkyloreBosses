@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "skylore_bosses:block/coolant_vent"
+    },
+    "lit=true": {
+      "model": "skylore_bosses:block/coolant_vent_lit"
+    }
+  }
+}

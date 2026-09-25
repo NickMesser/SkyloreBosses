@@ -672,6 +672,406 @@
       }
     ]
   },
+  "null_router.ack": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ack",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ack",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.ack.close": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ack.close",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ack_close",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.ack.warn": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ack.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ack_warn",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.arm": {
+    "subtitle": "subtitles.skylore_bosses.null_router.arm",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/arm"
+      }
+    ]
+  },
+  "null_router.boot": {
+    "subtitle": "subtitles.skylore_bosses.null_router.boot",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/boot",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.burst.eject": {
+    "subtitle": "subtitles.skylore_bosses.null_router.burst.eject",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/burst_eject"
+      }
+    ]
+  },
+  "null_router.burst.fizzle": {
+    "subtitle": "subtitles.skylore_bosses.null_router.burst.fizzle",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/burst_fizzle"
+      }
+    ]
+  },
+  "null_router.burst.windup": {
+    "subtitle": "subtitles.skylore_bosses.null_router.burst.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/burst_windup"
+      }
+    ]
+  },
+  "null_router.chime": {
+    "subtitle": "subtitles.skylore_bosses.null_router.chime",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/chime",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.chime.windup": {
+    "subtitle": "subtitles.skylore_bosses.null_router.chime.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/chime_windup",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.console.flipped": {
+    "subtitle": "subtitles.skylore_bosses.null_router.console.flipped",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/console_flipped"
+      }
+    ]
+  },
+  "null_router.console.set": {
+    "subtitle": "subtitles.skylore_bosses.null_router.console.set",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/console_set"
+      }
+    ]
+  },
+  "null_router.coolant.hiss": {
+    "subtitle": "subtitles.skylore_bosses.null_router.coolant.hiss",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/coolant_hiss",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.coolant.vent": {
+    "subtitle": "subtitles.skylore_bosses.null_router.coolant.vent",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/coolant_vent",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.death": {
+    "subtitle": "subtitles.skylore_bosses.null_router.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/death",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.dock": {
+    "subtitle": "subtitles.skylore_bosses.null_router.dock",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/dock",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.drain": {
+    "subtitle": "subtitles.skylore_bosses.null_router.drain",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/drain"
+      }
+    ]
+  },
+  "null_router.flick.refused": {
+    "subtitle": "subtitles.skylore_bosses.null_router.flick.refused",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/flick_refused"
+      }
+    ]
+  },
+  "null_router.flick.windup": {
+    "subtitle": "subtitles.skylore_bosses.null_router.flick.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/flick_windup"
+      }
+    ]
+  },
+  "null_router.gate.open": {
+    "subtitle": "subtitles.skylore_bosses.null_router.gate.open",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/gate_open"
+      }
+    ]
+  },
+  "null_router.idle.hum": {
+    "subtitle": "subtitles.skylore_bosses.null_router.idle.hum",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/idle_hum"
+      }
+    ]
+  },
+  "null_router.lance.charge": {
+    "subtitle": "subtitles.skylore_bosses.null_router.lance.charge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/lance_charge"
+      }
+    ]
+  },
+  "null_router.lance.fire": {
+    "subtitle": "subtitles.skylore_bosses.null_router.lance.fire",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/lance_fire"
+      }
+    ]
+  },
+  "null_router.lockdown": {
+    "subtitle": "subtitles.skylore_bosses.null_router.lockdown",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/lockdown",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.misroute": {
+    "subtitle": "subtitles.skylore_bosses.null_router.misroute",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/misroute"
+      }
+    ]
+  },
+  "null_router.misroute.windup": {
+    "subtitle": "subtitles.skylore_bosses.null_router.misroute.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/misroute_windup"
+      }
+    ]
+  },
+  "null_router.nak": {
+    "subtitle": "subtitles.skylore_bosses.null_router.nak",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/nak"
+      }
+    ]
+  },
+  "null_router.ping": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ping",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ping"
+      }
+    ]
+  },
+  "null_router.ping.console": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ping.console",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ping_console"
+      }
+    ]
+  },
+  "null_router.release": {
+    "subtitle": "subtitles.skylore_bosses.null_router.release",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/release"
+      }
+    ]
+  },
+  "null_router.request": {
+    "subtitle": "subtitles.skylore_bosses.null_router.request",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/request",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.request.cleared": {
+    "subtitle": "subtitles.skylore_bosses.null_router.request.cleared",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/request_cleared",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.retry.death": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_death"
+      }
+    ]
+  },
+  "null_router.retry.drop": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.drop",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_drop"
+      }
+    ]
+  },
+  "null_router.retry.reroute": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.reroute",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_reroute"
+      }
+    ]
+  },
+  "null_router.retry.timeout": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.timeout",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_timeout"
+      }
+    ]
+  },
+  "null_router.retry.uplink": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.uplink",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_uplink"
+      }
+    ]
+  },
+  "null_router.retry.zap": {
+    "subtitle": "subtitles.skylore_bosses.null_router.retry.zap",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/retry_zap"
+      }
+    ]
+  },
+  "null_router.rotate": {
+    "subtitle": "subtitles.skylore_bosses.null_router.rotate",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/rotate"
+      }
+    ]
+  },
+  "null_router.rotate.warn": {
+    "subtitle": "subtitles.skylore_bosses.null_router.rotate.warn",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/rotate_warn"
+      }
+    ]
+  },
+  "null_router.short": {
+    "subtitle": "subtitles.skylore_bosses.null_router.short",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/short"
+      }
+    ]
+  },
+  "null_router.stall": {
+    "subtitle": "subtitles.skylore_bosses.null_router.stall",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/stall"
+      }
+    ]
+  },
+  "null_router.storm.alarm": {
+    "subtitle": "subtitles.skylore_bosses.null_router.storm.alarm",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/storm_alarm",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.storm.port": {
+    "subtitle": "subtitles.skylore_bosses.null_router.storm.port",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/storm_port",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "null_router.terminal": {
+    "subtitle": "subtitles.skylore_bosses.null_router.terminal",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/terminal"
+      }
+    ]
+  },
+  "null_router.ttl.pulse": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ttl.pulse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ttl_pulse"
+      }
+    ]
+  },
+  "null_router.ttl.windup": {
+    "subtitle": "subtitles.skylore_bosses.null_router.ttl.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/ttl_windup"
+      }
+    ]
+  },
+  "null_router.victory": {
+    "subtitle": "subtitles.skylore_bosses.null_router.victory",
+    "sounds": [
+      {
+        "name": "skylore_bosses:null_router/victory",
+        "attenuation_distance": 64
+      }
+    ]
+  },
   "overhead.brownout": {
     "subtitle": "subtitles.skylore_bosses.overhead.brownout",
     "sounds": [

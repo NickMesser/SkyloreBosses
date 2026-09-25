@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:chassis_pad"
+    },
+    "title": {
+      "translate": "advancements.null_router.no_misroute.title"
+    },
+    "description": {
+      "translate": "advancements.null_router.no_misroute.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:null_router/queue_zero"
+}

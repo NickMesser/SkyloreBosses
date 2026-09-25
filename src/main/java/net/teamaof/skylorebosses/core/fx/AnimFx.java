@@ -115,6 +115,10 @@ public final class AnimFx {
                 case "communion_mote" -> new Profile(10, 0.8, 0.04, 0.06);
                 case "beryl_glint" -> new Profile(10, 0.4, 0.3, 0.02);
                 case "litany_light" -> new Profile(12, 0.5, 0.05, 0.02);
+                case "packet_spark" -> new Profile(10, 0.4, 0.3, 0.05);
+                case "coolant_mist" -> new Profile(12, 0.8, 0.05, 0.03);
+                case "ack_glint" -> new Profile(10, 0.5, 0.2, 0.04);
+                case "null_beam" -> new Profile(8, 0.3, 0.05, 0.0);
                 default -> new Profile(6, 0.5, 0.1, 0.0);
             };
         }

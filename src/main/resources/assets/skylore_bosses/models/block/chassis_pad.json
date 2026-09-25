@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "skylore_bosses:block/null_router/chassis_pad_top",
+    "bottom": "skylore_bosses:block/null_router/chassis_pad_side",
+    "side": "skylore_bosses:block/null_router/chassis_pad_side"
+  }
+}

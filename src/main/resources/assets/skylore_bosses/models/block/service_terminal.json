@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "skylore_bosses:block/null_router/service_terminal",
+    "side": "skylore_bosses:block/null_router/service_terminal_side",
+    "top": "skylore_bosses:block/null_router/vault_ceiling"
+  }
+}

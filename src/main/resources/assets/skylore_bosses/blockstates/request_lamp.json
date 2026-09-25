@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "glyph=circle,mode=off": {
+      "model": "skylore_bosses:block/request_lamp_off"
+    },
+    "glyph=circle,mode=head": {
+      "model": "skylore_bosses:block/request_lamp_circle"
+    },
+    "glyph=circle,mode=next": {
+      "model": "skylore_bosses:block/request_lamp_circle_dim"
+    },
+    "glyph=triangle,mode=off": {
+      "model": "skylore_bosses:block/request_lamp_off"
+    },
+    "glyph=triangle,mode=head": {
+      "model": "skylore_bosses:block/request_lamp_triangle"
+    },
+    "glyph=triangle,mode=next": {
+      "model": "skylore_bosses:block/request_lamp_triangle_dim"
+    },
+    "glyph=square,mode=off": {
+      "model": "skylore_bosses:block/request_lamp_off"
+    },
+    "glyph=square,mode=head": {
+      "model": "skylore_bosses:block/request_lamp_square"
+    },
+    "glyph=square,mode=next": {
+      "model": "skylore_bosses:block/request_lamp_square_dim"
+    }
+  }
+}

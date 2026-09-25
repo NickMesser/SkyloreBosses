@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:request_lamp"
+    },
+    "title": {
+      "translate": "advancements.null_router.storm_weathered.title"
+    },
+    "description": {
+      "translate": "advancements.null_router.storm_weathered.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:null_router/wet_ack"
+}

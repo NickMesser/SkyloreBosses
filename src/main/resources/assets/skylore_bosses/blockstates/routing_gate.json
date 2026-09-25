@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=false": {
+      "model": "skylore_bosses:block/routing_gate_closed"
+    },
+    "open=true": {
+      "model": "skylore_bosses:block/routing_gate_open"
+    }
+  }
+}

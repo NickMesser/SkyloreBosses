@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:closed_ticket"
+    },
+    "title": {
+      "translate": "advancements.null_router.queue_zero.title"
+    },
+    "description": {
+      "translate": "advancements.null_router.queue_zero.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:null_router/wet_ack"
+}

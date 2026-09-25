@@ -352,6 +352,21 @@ def chant(r, d=3.0, f=98):
     return reverb(x * env_adsr(len(tt), d * 0.25, d * 0.35), 1.8, 0.45, r)
 
 
+# ---------------- automaton recipes (Null Router) ----------------
+def modem(r, d=1.0, count=8):
+    """dial-up handshake: short FM tone bursts hopping between carrier frequencies, over a faint hiss"""
+    n = int(SR * d)
+    out = band(r.standard_normal(n), 1500, 7000) * 0.05
+    step = max(1, n // count)
+    for k in range(count):
+        s = k * step
+        f0, f1 = r.uniform(500, 2600), r.uniform(500, 2600)
+        seg = sweep(f0, f1, step / SR * 0.8) * 0.6
+        seg = seg * np.sin(np.linspace(0, np.pi, len(seg)))
+        out[s:s + len(seg)] += seg[: max(0, min(len(seg), n - s))]
+    return out
+
+
 # Checked before the organic rules; a boss's export script sets it (e.g. Overhead's industrial list).
 EXTRA_RULES = []
 

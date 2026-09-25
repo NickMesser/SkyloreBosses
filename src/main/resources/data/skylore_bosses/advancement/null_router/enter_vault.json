@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:service_terminal"
+    },
+    "title": {
+      "translate": "advancements.null_router.enter_vault.title"
+    },
+    "description": {
+      "translate": "advancements.null_router.enter_vault.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "skylore_bosses:block/null_router/vault_wall"
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ]
+}

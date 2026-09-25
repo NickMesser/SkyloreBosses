@@ -1,0 +1,184 @@
+{
+  "variants": {
+    "facing=north,glyph=circle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_circle_idle"
+    },
+    "facing=east,glyph=circle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_circle_idle",
+      "y": 90
+    },
+    "facing=south,glyph=circle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_circle_idle",
+      "y": 180
+    },
+    "facing=west,glyph=circle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_circle_idle",
+      "y": 270
+    },
+    "facing=north,glyph=circle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_circle_arming"
+    },
+    "facing=east,glyph=circle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_circle_arming",
+      "y": 90
+    },
+    "facing=south,glyph=circle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_circle_arming",
+      "y": 180
+    },
+    "facing=west,glyph=circle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_circle_arming",
+      "y": 270
+    },
+    "facing=north,glyph=circle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_circle_locked"
+    },
+    "facing=east,glyph=circle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_circle_locked",
+      "y": 90
+    },
+    "facing=south,glyph=circle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_circle_locked",
+      "y": 180
+    },
+    "facing=west,glyph=circle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_circle_locked",
+      "y": 270
+    },
+    "facing=north,glyph=circle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_circle_alert"
+    },
+    "facing=east,glyph=circle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_circle_alert",
+      "y": 90
+    },
+    "facing=south,glyph=circle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_circle_alert",
+      "y": 180
+    },
+    "facing=west,glyph=circle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_circle_alert",
+      "y": 270
+    },
+    "facing=north,glyph=triangle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_triangle_idle"
+    },
+    "facing=east,glyph=triangle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_triangle_idle",
+      "y": 90
+    },
+    "facing=south,glyph=triangle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_triangle_idle",
+      "y": 180
+    },
+    "facing=west,glyph=triangle,status=idle": {
+      "model": "skylore_bosses:block/channel_console_triangle_idle",
+      "y": 270
+    },
+    "facing=north,glyph=triangle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_triangle_arming"
+    },
+    "facing=east,glyph=triangle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_triangle_arming",
+      "y": 90
+    },
+    "facing=south,glyph=triangle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_triangle_arming",
+      "y": 180
+    },
+    "facing=west,glyph=triangle,status=arming": {
+      "model": "skylore_bosses:block/channel_console_triangle_arming",
+      "y": 270
+    },
+    "facing=north,glyph=triangle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_triangle_locked"
+    },
+    "facing=east,glyph=triangle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_triangle_locked",
+      "y": 90
+    },
+    "facing=south,glyph=triangle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_triangle_locked",
+      "y": 180
+    },
+    "facing=west,glyph=triangle,status=locked": {
+      "model": "skylore_bosses:block/channel_console_triangle_locked",
+      "y": 270
+    },
+    "facing=north,glyph=triangle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_triangle_alert"
+    },
+    "facing=east,glyph=triangle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_triangle_alert",
+      "y": 90
+    },
+    "facing=south,glyph=triangle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_triangle_alert",
+      "y": 180
+    },
+    "facing=west,glyph=triangle,status=alert": {
+      "model": "skylore_bosses:block/channel_console_triangle_alert",
+      "y": 270
+    },
+    "facing=north,glyph=square,status=idle": {
+      "model": "skylore_bosses:block/channel_console_square_idle"
+    },
+    "facing=east,glyph=square,status=idle": {
+      "model": "skylore_bosses:block/channel_console_square_idle",
+      "y": 90
+    },
+    "facing=south,glyph=square,status=idle": {
+      "model": "skylore_bosses:block/channel_console_square_idle",
+      "y": 180
+    },
+    "facing=west,glyph=square,status=idle": {
+      "model": "skylore_bosses:block/channel_console_square_idle",
+      "y": 270
+    },
+    "facing=north,glyph=square,status=arming": {
+      "model": "skylore_bosses:block/channel_console_square_arming"
+    },
+    "facing=east,glyph=square,status=arming": {
+      "model": "skylore_bosses:block/channel_console_square_arming",
+      "y": 90
+    },
+    "facing=south,glyph=square,status=arming": {
+      "model": "skylore_bosses:block/channel_console_square_arming",
+      "y": 180
+    },
+    "facing=west,glyph=square,status=arming": {
+      "model": "skylore_bosses:block/channel_console_square_arming",
+      "y": 270
+    },
+    "facing=north,glyph=square,status=locked": {
+      "model": "skylore_bosses:block/channel_console_square_locked"
+    },
+    "facing=east,glyph=square,status=locked": {
+      "model": "skylore_bosses:block/channel_console_square_locked",
+      "y": 90
+    },
+    "facing=south,glyph=square,status=locked": {
+      "model": "skylore_bosses:block/channel_console_square_locked",
+      "y": 180
+    },
+    "facing=west,glyph=square,status=locked": {
+      "model": "skylore_bosses:block/channel_console_square_locked",
+      "y": 270
+    },
+    "facing=north,glyph=square,status=alert": {
+      "model": "skylore_bosses:block/channel_console_square_alert"
+    },
+    "facing=east,glyph=square,status=alert": {
+      "model": "skylore_bosses:block/channel_console_square_alert",
+      "y": 90
+    },
+    "facing=south,glyph=square,status=alert": {
+      "model": "skylore_bosses:block/channel_console_square_alert",
+      "y": 180
+    },
+    "facing=west,glyph=square,status=alert": {
+      "model": "skylore_bosses:block/channel_console_square_alert",
+      "y": 270
+    }
+  }
+}

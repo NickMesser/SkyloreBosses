@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "gate": "skylore_bosses:block/null_router/routing_gate",
+    "particle": "skylore_bosses:block/null_router/routing_gate"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        0.5,
+        16
+      ],
+      "faces": {
+        "up": {
+          "texture": "#gate"
+        },
+        "down": {
+          "texture": "#gate"
+        }
+      }
+    }
+  ]
+}
