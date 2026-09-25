@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:hollow_brazier"
+    },
+    "title": {
+      "translate": "advancements.amanita.relit.title"
+    },
+    "description": {
+      "translate": "advancements.amanita.relit.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:amanita/first_light"
+}

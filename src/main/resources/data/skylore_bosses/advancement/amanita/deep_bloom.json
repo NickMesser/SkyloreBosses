@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "skylore_bosses:gill_shelf"
+    },
+    "title": {
+      "translate": "advancements.amanita.deep_bloom.title"
+    },
+    "description": {
+      "translate": "advancements.amanita.deep_bloom.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:amanita/first_light"
+}

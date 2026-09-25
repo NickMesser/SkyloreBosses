@@ -82,7 +82,27 @@ AUTOMATON = [  # name, base, dark, light, glow
     ("rubber",       (30, 30, 34),    (10, 10, 12),    (56, 56, 62),    False),
     ("packet",       (255, 150, 40),  (180, 80, 10),   (255, 220, 140), True),
 ]
-_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL, "liturgical": LITURGICAL, "automaton": AUTOMATON}
+# Shadow hollow (Amanita): fungal-shadow matter, pale stalks, lilac gills, bioluminescent gills/eyes/spores, swallowed
+# light. Usually overridden tile by tile with Codex swatches; these colours are the procedural fallback.
+HOLLOW = [  # name, base, dark, light, glow
+    ("cap",        (58, 34, 70),    (24, 12, 32),    (96, 64, 110),   False),
+    ("cap_dark",   (26, 14, 34),    (8, 4, 12),      (50, 30, 62),    False),
+    ("wart",       (226, 218, 196), (160, 150, 130), (246, 242, 228), False),
+    ("gill",       (170, 150, 186), (110, 92, 128),  (210, 196, 224), False),
+    ("gill_glow",  (190, 120, 255), (90, 40, 170),   (236, 200, 255), True),
+    ("stipe",      (222, 216, 208), (160, 152, 146), (244, 240, 234), False),
+    ("volva",      (196, 186, 170), (130, 120, 108), (226, 218, 204), False),
+    ("hyphae",     (70, 60, 80),    (30, 24, 38),    (120, 108, 132), False),
+    ("shadow",     (18, 10, 24),    (4, 0, 8),       (40, 24, 52),    False),
+    ("skin",       (150, 138, 160), (96, 84, 106),   (196, 186, 204), False),
+    ("eye_glow",   (200, 255, 220), (90, 200, 150),  (250, 255, 250), True),
+    ("spore_glow", (230, 140, 220), (140, 60, 150),  (255, 210, 250), True),
+    ("moth",       (170, 156, 136), (110, 98, 84),   (210, 200, 184), False),
+    ("ember",      (255, 160, 50),  (180, 70, 10),   (255, 230, 150), True),
+    ("husk",       (110, 96, 84),   (60, 50, 44),    (156, 142, 128), False),
+    ("loam",       (40, 26, 44),    (16, 8, 18),     (70, 52, 76),    False),
+]
+_PALETTES = {"organic": MATS, "industrial": INDUSTRIAL, "liturgical": LITURGICAL, "automaton": AUTOMATON, "hollow": HOLLOW}
 # Optional folder of hand-painted or generated <material>.png swatches; a matching file replaces that procedural tile.
 OVERRIDE_DIR = None
 

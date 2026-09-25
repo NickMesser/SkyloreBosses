@@ -15,6 +15,7 @@ The boss encounters of the Skylore modpack, as one NeoForge mod. This repository
 | Boss | Boss folder (design, models, tools) | Java module |
 |---|---|---|
 | **Matris Calyx**, the Parasite Mother (Act V finale) | [bosses/matris_calyx](bosses/matris_calyx/README.md) | `bosses/matriscalyx/` |
+| **Amanita**, the Hollow Bloom (Act I-II, Tenebris nemesis) | [bosses/amanita](bosses/amanita/README.md) | `bosses/amanita/` |
 | **Overhead**, Noven's Decommissioned Prototype (Act II) | [bosses/overhead](bosses/overhead/README.md) | `bosses/overhead/` |
 | **The Static Deacon**, caretaker of the Church of Ender undercroft (Act III) | [bosses/static_deacon](bosses/static_deacon/README.md) | `bosses/staticdeacon/` |
 | **Null Router**, the Unacked (Act IV, Automaton network) | [bosses/null_router](bosses/null_router/README.md) | `bosses/nullrouter/` |
@@ -74,6 +75,7 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
   - `t_proto.py`: Proto-World entry
   - `t_overhead.py`: Overhead end to end (phases, gate, pylons, re-arm, persistence, every attack, victory)
   - `t_static_deacon.py`: Static Deacon end to end (floor verbs, heal gate, stance, vigil, reseed rite, persistence, every attack, victory)
+  - `t_amanita.py`: Amanita end to end (light gate against real block light, placement ledger, braziers, every snuff source, lamp-eaters, hollow-spawn, P2 clamp and relight, hush, P4 deep bloom and force-open, Tenebris call, persistence, every attack, victory)
   - `t_null_router.py`: Null Router end to end (consoles by right-click, arming, ACK window, dry/wet throughput, misroutes, retries, coolant, floor short, P4 storm, persistence, every attack, victory)
 
 ## Commands (op level 2)
@@ -88,6 +90,11 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
   - `windows`
   - `attack <kind>`
   - `infection <players> <value>`
+
+- `/skylorebosses amanita ...`. For Amanita, `/skyloreamanita` is a shortcut:
+  - `build [pos]`, `register [pos]`, `unregister`
+  - `start`, `reset`, `skipphase`, `status`, `tp`, `hold <true|false>`, `lights`
+  - `snuff [radius]`, `setlight <-1..15>`, `spawnservants <eater|spawn> [n]`, `attack <id>`
 
 - `/skylorebosses overhead ...`. For Overhead, `/skyloreoverhead` is a shortcut:
   - `build [pos]`, `register [pos]`, `unregister`
@@ -110,7 +117,8 @@ To add a boss, follow [docs/ADDING_A_BOSS.md](docs/ADDING_A_BOSS.md).
 - **Any boss:** listen to `BossEvents.DEFEATED` (level, bossId, origin, participants) to grant stages, e.g. `calyx_purged` for `matris_calyx`.
 - **Matris details:** `MatrisEvents`, the advancement `skylore_bosses:matris_calyx/bloom_slain`, or `victoryFunction` in the `[matris_calyx]` section of `skylore_bosses-server.toml`.
 - **Proto-World:** the Tempad target is `skylore_bosses:proto_world`.
+- **Amanita details:** `AmanitaEvents` (`START_CHECK` for the `met_amanita` gate, `LIGHT_PLACED`, `LIGHTS_SNUFFED`, `EXPOSED`, `DEEP_BLOOM`, `VICTORY`, `ARTIFACTS_ROLLED`, `registerOriginResolver`), the advancement `skylore_bosses:amanita/bloom_wilted`, or `victoryFunction` in the `[amanita]` section. Grant `amanita_bested` from `BossEvents.DEFEATED` with boss id `amanita`. Shadow artifacts: override the loot table `skylore_bosses:gameplay/amanita/shadow_artifacts`. Origins: tag players `skylore_origin_tenebris` / `skylore_origin_laevis` or register a resolver. See [bosses/amanita/DESIGN.md](bosses/amanita/DESIGN.md) §11-13.
 - **Overhead details:** `OverheadEvents` (including `START_CHECK` to gate the fight, e.g. on the Mek steel stage), the advancement `skylore_bosses:overhead/prototype_down`, or `victoryFunction` in the `[overhead]` section. Grant `teknari_prototype_down` from `BossEvents.DEFEATED` with boss id `overhead`. See [bosses/overhead/DESIGN.md](bosses/overhead/DESIGN.md) §12.
 - **Static Deacon details:** `DeaconEvents` (`START_CHECK` for the `church_of_ender` gate, `FLAGSTONE_DESECRATED`, `VIGIL_BROKEN`, `RESEED_STARTED`, `VICTORY`), the advancement `skylore_bosses:static_deacon/deacon_silenced`, or `victoryFunction` in the `[static_deacon]` section. Grant `static_deacon_cleared` from `BossEvents.DEFEATED` with boss id `static_deacon`. See [bosses/static_deacon/DESIGN.md](bosses/static_deacon/DESIGN.md) §12.
 - **Null Router details:** `RouterEvents` (`START_CHECK` for the `ae2_cpu` gate, `REQUEST_ISSUED`, `ACK_OPENED`, `ACK_CLOSED`, `MISROUTED`, `QUEUE_CHANGED`, `VICTORY`), the advancement `skylore_bosses:null_router/queue_zero`, or `victoryFunction` in the `[null_router]` section. Grant the existing `automaton_network` stage from `BossEvents.DEFEATED` with boss id `null_router`. See [bosses/null_router/DESIGN.md](bosses/null_router/DESIGN.md) §12.
-- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`, `#skylore_bosses:overhead/breakable_cover`, `#skylore_bosses:overhead/flight_vehicles`, `#skylore_bosses:static_deacon/communion_substrate`, `#skylore_bosses:static_deacon/breakable_cover`.
+- **Tags to fill:** `#skylore_bosses:doctor_tools`, `#skylore_bosses:matris_calyx/cures`, `#skylore_bosses:matris_calyx/laser_proof`, `#skylore_bosses:overhead/breakable_cover`, `#skylore_bosses:overhead/flight_vehicles`, `#skylore_bosses:static_deacon/communion_substrate`, `#skylore_bosses:static_deacon/breakable_cover`, `#skylore_bosses:amanita/igniters` (items), `#skylore_bosses:amanita/snuff_immune` (blocks).

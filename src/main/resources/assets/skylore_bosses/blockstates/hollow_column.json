@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "skylore_bosses:block/hollow_column"
+    },
+    "axis=z": {
+      "model": "skylore_bosses:block/hollow_column",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "skylore_bosses:block/hollow_column",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

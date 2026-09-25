@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:soul_lantern"
+    },
+    "title": {
+      "translate": "advancements.amanita.no_deep_bloom.title"
+    },
+    "description": {
+      "translate": "advancements.amanita.no_deep_bloom.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "code"
+    ]
+  ],
+  "parent": "skylore_bosses:amanita/bloom_wilted"
+}

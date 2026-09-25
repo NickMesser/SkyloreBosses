@@ -1,4 +1,378 @@
 {
+  "amanita.absorb": {
+    "subtitle": "subtitles.skylore_bosses.amanita.absorb",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/absorb"
+      }
+    ]
+  },
+  "amanita.bared": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bared",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bared"
+      }
+    ]
+  },
+  "amanita.bloom.open": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bloom.open",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bloom_open"
+      }
+    ]
+  },
+  "amanita.bloom.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bloom.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bloom_windup"
+      }
+    ]
+  },
+  "amanita.bolt.cast": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bolt.cast",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bolt_cast"
+      }
+    ]
+  },
+  "amanita.bolt.impact": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bolt.impact",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bolt_impact"
+      }
+    ]
+  },
+  "amanita.bolt.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.bolt.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/bolt_windup"
+      }
+    ]
+  },
+  "amanita.brazier.light": {
+    "subtitle": "subtitles.skylore_bosses.amanita.brazier.light",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/brazier_light"
+      }
+    ]
+  },
+  "amanita.call.root": {
+    "subtitle": "subtitles.skylore_bosses.amanita.call.root",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/call_root"
+      }
+    ]
+  },
+  "amanita.dash.go": {
+    "subtitle": "subtitles.skylore_bosses.amanita.dash.go",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/dash_go"
+      }
+    ]
+  },
+  "amanita.dash.smother": {
+    "subtitle": "subtitles.skylore_bosses.amanita.dash.smother",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/dash_smother"
+      }
+    ]
+  },
+  "amanita.dash.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.dash.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/dash_windup"
+      }
+    ]
+  },
+  "amanita.death": {
+    "subtitle": "subtitles.skylore_bosses.amanita.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/death",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.deep.bloom": {
+    "subtitle": "subtitles.skylore_bosses.amanita.deep.bloom",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/deep_bloom",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.deep.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.deep.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/deep_windup",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.eater.burrow": {
+    "subtitle": "subtitles.skylore_bosses.amanita.eater.burrow",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/eater_burrow"
+      }
+    ]
+  },
+  "amanita.eater.chew": {
+    "subtitle": "subtitles.skylore_bosses.amanita.eater.chew",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/eater_chew"
+      }
+    ]
+  },
+  "amanita.eater.death": {
+    "subtitle": "subtitles.skylore_bosses.amanita.eater.death",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/eater_death"
+      }
+    ]
+  },
+  "amanita.eater.emerge": {
+    "subtitle": "subtitles.skylore_bosses.amanita.eater.emerge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/eater_emerge"
+      }
+    ]
+  },
+  "amanita.eater.gulp": {
+    "subtitle": "subtitles.skylore_bosses.amanita.eater.gulp",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/eater_gulp"
+      }
+    ]
+  },
+  "amanita.full.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.full.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/full_windup",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.howl": {
+    "subtitle": "subtitles.skylore_bosses.amanita.howl",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/howl",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.howl.inhale": {
+    "subtitle": "subtitles.skylore_bosses.amanita.howl.inhale",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/howl_inhale",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.hurt": {
+    "subtitle": "subtitles.skylore_bosses.amanita.hurt",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/hurt"
+      }
+    ]
+  },
+  "amanita.idle.breathe": {
+    "subtitle": "subtitles.skylore_bosses.amanita.idle.breathe",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/idle_breathe"
+      }
+    ]
+  },
+  "amanita.knocker": {
+    "subtitle": "subtitles.skylore_bosses.amanita.knocker",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/knocker"
+      }
+    ]
+  },
+  "amanita.lash.swing": {
+    "subtitle": "subtitles.skylore_bosses.amanita.lash.swing",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/lash_swing"
+      }
+    ]
+  },
+  "amanita.lash.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.lash.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/lash_windup"
+      }
+    ]
+  },
+  "amanita.lockdown": {
+    "subtitle": "subtitles.skylore_bosses.amanita.lockdown",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/lockdown",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.recoil": {
+    "subtitle": "subtitles.skylore_bosses.amanita.recoil",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/recoil"
+      }
+    ]
+  },
+  "amanita.rise": {
+    "subtitle": "subtitles.skylore_bosses.amanita.rise",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/rise",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.sink": {
+    "subtitle": "subtitles.skylore_bosses.amanita.sink",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/sink"
+      }
+    ]
+  },
+  "amanita.slam.wave": {
+    "subtitle": "subtitles.skylore_bosses.amanita.slam.wave",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/slam_wave"
+      }
+    ]
+  },
+  "amanita.slam.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.slam.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/slam_windup"
+      }
+    ]
+  },
+  "amanita.snuff.full": {
+    "subtitle": "subtitles.skylore_bosses.amanita.snuff.full",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/snuff_full",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.snuff.gather": {
+    "subtitle": "subtitles.skylore_bosses.amanita.snuff.gather",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/snuff_gather",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.snuff.hiss": {
+    "subtitle": "subtitles.skylore_bosses.amanita.snuff.hiss",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/snuff_hiss",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.snuff.pulse": {
+    "subtitle": "subtitles.skylore_bosses.amanita.snuff.pulse",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/snuff_pulse",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.snuff.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.snuff.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/snuff_windup",
+        "attenuation_distance": 64
+      }
+    ]
+  },
+  "amanita.spawn.dissolve": {
+    "subtitle": "subtitles.skylore_bosses.amanita.spawn.dissolve",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/spawn_dissolve"
+      }
+    ]
+  },
+  "amanita.spawn.emerge": {
+    "subtitle": "subtitles.skylore_bosses.amanita.spawn.emerge",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/spawn_emerge"
+      }
+    ]
+  },
+  "amanita.spawn.swing": {
+    "subtitle": "subtitles.skylore_bosses.amanita.spawn.swing",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/spawn_swing"
+      }
+    ]
+  },
+  "amanita.veil.bloom": {
+    "subtitle": "subtitles.skylore_bosses.amanita.veil.bloom",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/veil_bloom"
+      }
+    ]
+  },
+  "amanita.veil.windup": {
+    "subtitle": "subtitles.skylore_bosses.amanita.veil.windup",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/veil_windup"
+      }
+    ]
+  },
+  "amanita.victory": {
+    "subtitle": "subtitles.skylore_bosses.amanita.victory",
+    "sounds": [
+      {
+        "name": "skylore_bosses:amanita/victory",
+        "attenuation_distance": 64
+      }
+    ]
+  },
   "matris_calyx.ambient.stomach": {
     "subtitle": "subtitles.skylore_bosses.matris_calyx.ambient.stomach",
     "sounds": [

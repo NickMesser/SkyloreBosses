@@ -19,14 +19,17 @@ public final class SBParticles {
             // liturgical set (The Static Deacon)
             "static_dust", "communion_mote", "beryl_glint", "litany_light",
             // automaton set (Null Router)
-            "packet_spark", "coolant_mist", "ack_glint", "null_beam"};
+            "packet_spark", "coolant_mist", "ack_glint", "null_beam",
+            // hollow set (Amanita)
+            "hollow_spore", "gill_glow", "snuff_smoke", "veil_mist"};
 
     static {
         for (String n : NAMES) {
             boolean alwaysShow = n.equals("laser_beam") || n.equals("laser_charge") || n.endsWith("_mark") || n.equals("red_beam")
                     || n.equals("grid_arc")
                     || n.equals("communion_mote") || n.equals("litany_light")
-                    || n.equals("null_beam") || n.equals("ack_glint");
+                    || n.equals("null_beam") || n.equals("ack_glint")
+                    || n.equals("gill_glow") || n.equals("snuff_smoke");
             BY_NAME.put(n, SBRegistries.PARTICLE_TYPES.register(n, () -> new SimpleParticleType(alwaysShow)));
         }
     }

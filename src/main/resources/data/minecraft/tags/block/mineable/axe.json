@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "skylore_bosses:yard_crate",
-    "skylore_bosses:crypt_pew"
+    "skylore_bosses:crypt_pew",
+    "skylore_bosses:gill_shelf"
   ]
 }

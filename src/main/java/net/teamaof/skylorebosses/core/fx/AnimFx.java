@@ -119,6 +119,10 @@ public final class AnimFx {
                 case "coolant_mist" -> new Profile(12, 0.8, 0.05, 0.03);
                 case "ack_glint" -> new Profile(10, 0.5, 0.2, 0.04);
                 case "null_beam" -> new Profile(8, 0.3, 0.05, 0.0);
+                case "hollow_spore" -> new Profile(16, 1.2, 0.05, 0.01);
+                case "gill_glow" -> new Profile(8, 0.8, 0.03, -0.02);
+                case "snuff_smoke" -> new Profile(10, 0.4, 0.04, 0.05);
+                case "veil_mist" -> new Profile(12, 1.4, 0.03, 0.01);
                 default -> new Profile(6, 0.5, 0.1, 0.0);
             };
         }

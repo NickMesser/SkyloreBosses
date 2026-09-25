@@ -2,6 +2,7 @@ package net.teamaof.skylorebosses.core;
 
 import java.util.List;
 import java.util.Optional;
+import net.teamaof.skylorebosses.bosses.amanita.AmanitaBoss;
 import net.teamaof.skylorebosses.bosses.matriscalyx.MatrisCalyxBoss;
 import net.teamaof.skylorebosses.bosses.nullrouter.NullRouterBoss;
 import net.teamaof.skylorebosses.bosses.overhead.OverheadBoss;
@@ -11,6 +12,7 @@ import net.teamaof.skylorebosses.bosses.staticdeacon.StaticDeaconBoss;
 public final class BossModules {
     private static final List<BossModule> ALL = List.of(
             new MatrisCalyxBoss(),
+            new AmanitaBoss(),
             new OverheadBoss(),
             new StaticDeaconBoss(),
             new NullRouterBoss()

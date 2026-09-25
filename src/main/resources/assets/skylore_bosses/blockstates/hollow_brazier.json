@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "skylore_bosses:block/hollow_brazier"
+    },
+    "lit=true": {
+      "model": "skylore_bosses:block/hollow_brazier_lit"
+    }
+  }
+}
